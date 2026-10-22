@@ -36,7 +36,7 @@ const pageDesc = description ?? SITE.description;
   </head>
   <body class="flex min-h-dvh overflow-x-clip bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
     <!-- CSS-only mobile drawer: the checkbox below powers the overlay + sidebar -->
-    <input id="site-nav" type="checkbox" class="hidden" />
+    <input id="site-nav" type="checkbox" class="peer hidden" />
     <div
       aria-hidden="true"
       class="pointer-events-none fixed inset-0 z-30 bg-slate-900/40 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
