@@ -5,19 +5,11 @@
  * <a href> or <img src> points to a page (or file) that was actually generated.
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { dirname, join, posix, resolve } from 'node:path';
+import { join, posix, resolve } from 'node:path';
+import { resolveBasePath } from './site-config.mjs';
 
 const distDir = resolve(process.argv[2] ?? 'dist');
-
-// Keep this in sync with astro.config.mjs: in Actions, the base path follows the
-// repository name unless BASE_PATH is explicitly provided.
-const repoName = (process.env.GITHUB_REPOSITORY ?? '').split('/')[1];
-const defaultBasePath = repoName
-  ? repoName.endsWith('.github.io')
-    ? '/'
-    : `/${repoName}`
-  : '/proba-stats-site';
-const basePath = (process.env.BASE_PATH ?? defaultBasePath).replace(/\/$/, '');
+const basePath = resolveBasePath().replace(/\/$/, '');
 
 function* walk(dir) {
   for (const name of readdirSync(dir)) {

@@ -253,8 +253,17 @@ The workflow in `.github/workflows/deploy.yml` builds and deploys on every push 
 One-time setup: in the repository **Settings → Pages → Build and deployment**, set *Source* to
 **GitHub Actions**.
 
-The base path defaults to `/proba-stats-site`. If the repository is ever renamed, override
-without touching code: `SITE_URL=https://example.io BASE_PATH= npm run build`.
+During Actions builds the site URL and base path are derived from `GITHUB_REPOSITORY`, so
+renaming the repository needs no code change. Local builds keep the `/proba-stats-site`
+default. Override either value when needed, for example for a custom domain:
+
+```bash
+SITE_URL=https://example.io BASE_PATH=/ npm run build
+```
+
+`public/.nojekyll` is copied into `dist/` so a branch-based deployment can serve the
+`_astro/` directory correctly. This is only a fallback; **Settings → Pages → Source** should
+still be **GitHub Actions**.
 
 ## Project structure (code)
 
