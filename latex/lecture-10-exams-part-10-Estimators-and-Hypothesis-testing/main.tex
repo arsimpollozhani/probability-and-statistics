@@ -1,0 +1,459 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+
+\usepackage{setspace}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{newtxtext}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{8pt}
+
+\onehalfspacing
+
+\title{
+  \vspace{-1.5cm}
+  \textbf{EXAM PROBLEMS: Estimators}
+  \vspace{-1.5cm}
+}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+
+\subsection{Problem}
+
+Let \[X : \mqty( 0 & 1 & 2 \\ \displaystyle\frac{2p}{3}  & \displaystyle\frac{p}{3} & 1-p)\]
+
+
+\begin{itemize}
+  \item [A)] (10) Determine an estimator for the parameter $p$ using the method of moments.
+
+  \item [B)] (20) It is believed that the following observations form a random sample from the given discrete distribution.
+
+\end{itemize}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+$x_i$     & 0  & 1  & 2  \\ \hline
+Frequency & 15 & 17 & 18 \\ \hline
+\end{tabular}
+\end{table}
+
+At a $5\%$ significance level, test whether these data come from the given distribution.
+
+
+
+
+\subsection{Problem}
+It is known that the weight of students in North Macedonia has a normal distribution with unknown mean and standard deviation. A random sample of the weights of 10 students (in kilograms) is given:
+
+\[ 55, 48, 62, 58, 65, 70, 52, 57, 59, 63 \]
+
+Using the maximum likelihood method, find an estimator for the average (mean) weight of students in North Macedonia.\\
+
+From the given sample, find an estimate of the average weight of students in North Macedonia.
+
+\subsection{Problem}
+
+The professor conducts an exam with 50 students in the following way: For each student, the professor asks questions until the student gives a correct answer. When the student answers a question correctly, the exam ends.
+The following results were obtained:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Number of questions & 1  & 2  & 3 & 4 & 5 \\ \hline
+Number of students  & 19 & 11 & 9 & 6 & 6 \\ \hline
+\end{tabular}
+\end{table}
+
+Let the random variable $X$ be the number of questions asked. What is the distribution of  $X$?\\
+
+Estimate the parameter of that distribution using the maximum likelihood method.
+
+
+\subsection{Problem}
+Let $X$ and $Y$ be estimators for the parameter $\theta$.
+$X$ has a uniform distribution on the interval $(\theta - 1, \theta + 1)$, and $Y$ has a distribution given by 
+
+\[
+P (Y = t) =
+\begin{cases}
+  10^{-2}, & t = \theta-10 \\
+  1-2\cdot 10^{-1}, & t = \theta \\
+  10^{-2} , & t = \theta + 10
+\end{cases}
+\]
+
+Are these estimators unbiased? Which estimator is better and why?
+
+\subsection{Problem}
+In a wedding restaurant, guests are offered Coca-Cola and Pepsi. The probability that a guest chooses Coca-Cola is $p$.
+
+\begin{itemize}
+  \item [a)] (10) Using the maximum likelihood method, determine an estimator for the parameter $p$.
+
+\item [b)] At one wedding, 55 out of 100 guests ordered Pepsi. (3) Determine an estimate for $p$ using MLE.
+\end{itemize}
+
+
+\subsection{Problem} Find MLE for the parameter $\theta$ for a distribution with density function 
+
+\[
+p(x)=
+\begin{cases}
+  e^{\theta-x}, & x \geq 0 \\
+  0, & x < 0
+\end{cases}  
+\]
+and a sample of size n.
+
+
+\subsection{Problem}
+The random variable $X$ is the number of errors made in one minute while typing text. The table gives the data for the number of errors per minute for one typist:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Number of errors  & 0  & 1  & 2  & 3  & 4 & 5 \\ \hline
+Number of minutes & 77 & 90 & 55 & 30 & 5 & 2 \\ \hline
+\end{tabular}
+\end{table}
+
+
+The errors made by the typist occur independently and cannot occur simultaneously.
+
+Which distribution is appropriate for modeling $X$?
+
+For the data in the table, test the assumption at $\alpha =0.01$ and find the MLE for the unknown parameter.
+
+\subsection{Problem}
+
+In the first two rounds of the group stage of the Champions League 2017/18 season, 32 matches were played. The results are given in the table:
+
+\begin{table}[h!]
+\centering
+\center
+\begin{tabular}{|cc|cc|}
+\hline
+\multicolumn{2}{|c|}{First round}             & \multicolumn{2}{c|}{Second round}            \\ \hline
+\multicolumn{1}{|c|}{home-guest} & home-guest & \multicolumn{1}{c|}{home-guest} & home-guest \\ \hline
+\multicolumn{1}{|c|}{3$-$0}        & 2$-$2        & \multicolumn{1}{c|}{5$-$0}        & 3$-$0        \\ \hline
+\multicolumn{1}{|c|}{1$-$2}        & 1$-$1        & \multicolumn{1}{c|}{1$-$4}        & 1$-$1        \\ \hline
+\multicolumn{1}{|c|}{3$-$0}        & 0$-$4        & \multicolumn{1}{c|}{3$-$0}        & 2$-$0        \\ \hline
+\multicolumn{1}{|c|}{0$-$5}        & 2$-$1        & \multicolumn{1}{c|}{0$-$3}        & 3$-$1        \\ \hline
+\multicolumn{1}{|c|}{6$-$0}        & 1$-$3        & \multicolumn{1}{c|}{1$-$2}        & 2$-$0        \\ \hline
+\multicolumn{1}{|c|}{0$-$0}        & 1$-$1        & \multicolumn{1}{c|}{1$-$2}        & 0$-$3        \\ \hline
+\multicolumn{1}{|c|}{3$-$0}        & 3$-$0        & \multicolumn{1}{c|}{0$-$1}        & 1$-$3        \\ \hline
+\multicolumn{1}{|c|}{2$-$3}        & 3$-$1        & \multicolumn{1}{c|}{2$-$0}        & 0$-$3        \\ \hline
+\end{tabular}
+\end{table}
+
+ If it is assumed that the number of goals scored by the away team in a match has a Poisson distribution with parameter ($\lambda$), determine the maximum likelihood estimator (MLE) for ($\lambda$), and estimate it from the given data.
+
+\subsection{Problem}
+
+After the analyses, all machines in the factory were upgraded. Then the service regulations were changed; each day a check for a safety problem is performed on each machine. A problem can occur with probability $p_1$. The machine is serviced after 5 safety problems have occurred. The consultant tested after how many days each of the 40 machines was serviced. The following data were obtained:
+
+\[
+18, 32, 16, 15, 23, 26, 26, 54, 8, 34, 12, 10, 17, 15, 12, 16, 13, 10, 
+\]
+\[
+  17, 18, 9, 0, 29, 24, 11, 17, 10, 45, 39, 21, 16, 2, 4, 9, 4, 26, 29, 14, 28, 32
+\]
+
+\[\Sigma = 761\]
+
+Estimate the probability ($p_1$) using the maximum likelihood method.
+
+\subsection{Problem}
+The number of points scored by the basketball team of North Macedonia against a given opponent follows a normal distribution with unknown mean ($\mu$) and variance ($\sigma^2$). The number of points scored by the North Macedonia team in 10 matches between these two teams is:
+
+\[
+59, 62, 59, 74, 70, 61, 62, 66, 62, 75
+\]
+
+(10) Using the maximum likelihood method, find an estimate for the mean ($\mu$).
+
+
+\subsection{Problem}
+A box contains one black ball and $k$ white balls. One experiment consists of drawing one ball with replacement until the black ball is drawn. After $15$ experiments, the following results were obtained for the number of draws in each experiment:
+
+\[
+13, 7, 1, 5, 4, 5, 11, 3, 1, 14, 1, 3, 4, 1, 6
+\]
+
+Estimate the number of white balls in the box using the maximum likelihood estimator (MLE).
+
+
+\subsection{Problem}
+
+A handball match lasts 1 hour. Assume that the number of goals scored in one part of the match does not depend on the number of goals scored in another part, the probability of a goal in a small time interval is proportional to the length of the interval, and two goals cannot occur at the same time.
+
+\begin{itemize}
+  \item [a)] What is the distribution of the random variable $X$ - the number of goals in one match?
+  \item [b)] Find the expected value $EX$
+  \item [c)] Find an estimator using the method of moments for the unknown parameter and estimate it from the data given below for the results in Group B of the 2017 Handball World Championship.
+\end{itemize}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Group & Goals                                                      & $\bar{x}$ & $\Sigma x_i^{2}$ \\ \hline
+A     & 47, 68, 42, 50, 52, 52, 59, 51, 44, 65, 51, 59, 52, 51, 61 & 53.6      & 43856            \\ \hline
+B     & 67, 64, 48, 51, 47, 53, 44, 51, 64, 56, 52, 54, 77, 54, 62 & 56.2      & 48586            \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Problem}
+In center $A$, each day of the week (independently) there may be a need to call a specialist. The probability $p$ that a specialist will be called is the same for each day. Let $U$ be the random variable representing the number of days in the week when a specialist was called.
+\begin{itemize}
+  \item [a)] Derive $E[U]$.
+   \item [b)] The director of center $A$ conducted research over 40 weeks and calculated for the sample:
+\end{itemize}
+\[
+\sum_{i=1}^{40} y_i = 189
+\]
+
+He wants to estimate the probability $p$ that a specialist will be needed on a random day of the week. Help the director find an estimate for $p$ using the method of moments.
+
+
+\subsection{Problem}
+In the 200m women's semifinals at the 2016 Olympics, the results in seconds are:
+
+First semifinal
+\[
+21.96, 22.13, 22.38, 22.49, 22.69, 22.83, 22.90, 23.45
+\]
+
+Second semifinal:
+\[
+22.28, 22.42, 22.50, 22.55, 22.81, 22.94, 22.99, 22.99
+\]
+
+Assuming that the results follow a normal distribution $N(\mu, \sigma^2)$, find estimators for the unknown parameters using the method of moments and estimate their values.
+
+\subsection{Problem}
+In a factory, chips are produced in batches of 100 chips. Each chip can be defective with probability $p$, independently of the other chips.
+
+The responsible engineer wants to determine the probability that a random batch will have fewer than 4 defective chips. Using the estimator for $p$ obtained by the method of moments and the maximum likelihood method, estimate this probability.
+
+\subsection{Problem}
+The administrator of a computer center, at the beginning of each day, runs an antivirus program and reviews its report. The checks are performed each day until 3 negative reports are obtained, at which point a detailed test of the center is performed.
+
+After 40 detailed tests, the administrator collected data for the number of checks $X$ needed for each test (data given in a table).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+$x_k$ & 3  & 4  & 5 & 6 & 7 & 8 & 9 \\ \hline
+$n_k$ & 10 & 10 & 8 & 6 & 3 & 1 & 2 \\ \hline
+\end{tabular}
+\end{table}
+
+The probability of obtaining a negative report from the antivirus program is $p$. Using the maximum likelihood method, find an estimate for $p$.
+
+\subsection{Problem}
+At each cash register in Vero, customers are served independently (independent of each other), and $k$ customers are served in one hour. The registers are never free at any moment.
+\begin{itemize}
+  
+\item [a)] If Vero operates with three cash registers, find an estimate for the total number of customers served in one hour.
+
+\item [b)] The following data were collected for the number of customers served in one hour at the first register:
+\end{itemize}
+
+\[
+33, 30, 18, 21, 19, 28, 18, 22, 31, 28, 25, 17, 20, 32, 34
+\]
+
+Find the maximum likelihood estimator for the average number of customers served in one hour. What is the probability that in the next hour the register will serve 20 customers?
+
+\subsection{Problem}
+A rectangle is constructed randomly with sides $X$ and $2X$, where $X$ is a random variable with probability density function 
+
+
+\[ 
+f(x) = 
+\begin{cases}
+  \frac{x}{\theta}, & 0 < x < \theta, \ \ \theta > 0 \\
+  0, & otherwise
+\end{cases}  
+\]
+
+Based on a sample of size $n$, $X_1, X_2, \dots, X_n$, of the lengths of one side, determine a method of moments estimator for the expected area of the rectangle.
+
+
+\subsection{Problem}
+Let $6, 5, 10, 7, 7, 8, 6, 5, 2, 2$ be a sample from a random variable $X$ that has a Poisson distribution with unknown parameter $\theta$. Using the maximum likelihood method, find an estimate for $E(X)$.
+
+
+\subsection{Problem}
+The service time at a bank counter (in minutes) follows an exponential distribution with parameter $\lambda$.
+
+The service times for 10 clients are:
+\[
+7.4, 7.5, 8.5, 29.2, 5.5, 21.6, 4.3, 8.1, 5.3, 1.7
+\]
+
+Find an estimate for the parameter $\lambda$. What is the average service time per client?
+
+
+\subsection{Problem}
+A system has 4 communication channels. A signal is successfully transmitted over the $i-th$ channel with probability
+
+\[
+p_i = \frac{1}{5-i}, \quad i=1,2,3,4
+\]
+
+Before sending the signal over a channel, the system's reliability is checked. Let the probability that the system is reliable be $p$. The system is checked 4 times. If the reliability check is successful $i$ times $(i = 1,2,3,4)$, the signal is sent over the $i-th$ channel. If $i=0$, the signal is not sent over any channel. \\
+
+During the day, the signals sent over the channels are: 12 signals over the first channel, 10 signals over the second channel, 7 signals over the third channel, 3 signals over the fourth channel
+, 5 signals were not sent over any channel. \\ 
+
+Estimate the probability $p$ that the system is reliable.
+
+\subsection{Problem}
+A product in a factory is tested until it successfully passes the test twice. Each single test is passed with probability $p$.
+
+Estimate the probability $p$.
+
+Here’s the translation with proper LaTeX formatting:
+
+
+\subsection{Problem}
+Let X be a random variable with density function for $\lambda > 0$
+
+\[
+p(x) = 
+\begin{cases}
+\lambda x^{\lambda-1}, & 0 < x < 1 \\
+0, & otherwise
+\end{cases}  
+\]
+
+Determine an estimator for $\lambda$ using:
+\begin{itemize}
+  \item [a)] method of moments
+  \item [b)] maximum likelihood estimator (MLE)
+\end{itemize}
+
+
+\section{Hypothesis testing}
+
+
+\subsection{Problem}
+In order to analyze the results of the January session for the course Probability and Statistics through online learning compared to classical learning, 50 students who passed the exam in the January session and studied online were randomly selected, and 41 randomly selected students who passed the exam and studied classically.
+The average scores of students who studied online are 67.25 with variance 3.25, while the average scores of students who studied classically are 49.75 with variance 2.75. Assume that the scores are normally distributed.
+\begin{itemize}
+  \item [a)] (10) Test the equality of variances at the significance level (\alpha = 0.05).
+  \item [b)] (15) At the significance level $\alpha = 0.05$, test whether students who studied online score, on average, higher than students who studied classically. (Use the result from part a) regarding equality of variances).
+\end{itemize}
+
+\subsection{Problem}
+A French fries manufacturer wants to check the quality of production. According to standards, the expected mass of one package should be 750 grams, coming from a normal distribution with standard deviation 5 grams. A sample of 5 packages was taken, and the measured masses are:
+\[
+775, 760, 745, 740, 738
+\]
+At a significance level of $5\%$, can it be concluded that there is a change in the mass of the French fries per package?
+
+\subsection{Problem}
+The average salary in North Macedonia was 29000 denars. The salaries for June were analyzed for 100 employees, and it was found that their average salary was 30000 denars. The standard deviation is known to be 2500 denars.
+At a significance level of $\alpha = 0.05$, can it be concluded that the average salary in June is higher than in March?
+
+\subsection{Problem}
+According to research in Macedonia in 2015, the average age of women in the IT business was (30) years. Researchers have indications that this number will increase.
+The study was repeated in 2020, with a sample of 97 women in IT, giving an average age of 35.4 years. The standard deviation is known to be 7.3.
+At a significance level $\alpha = 0.01$, conduct a test to verify whether the researchers' indications are correct.
+
+\subsection{Problem}
+The pass rate for a subject is $30\%$. All students have an equal probability of passing. To increase the pass rate, the teaching staff implemented a reform. In the first academic year after the reform, out of 1000 enrolled students, 350 passed the subject.
+At a significance level $\alpha = 0.05$, test the hypothesis that the pass rate remained the same against the alternative that the pass rate increased.
+
+\subsection{Problem}
+A telephone company conducted a survey of the time their customers spend on mobile phones each day. For a sample of 25 customers, the sample standard deviation was 12.5 minutes. Assume the data follows a normal distribution.
+Find the 95\% confidence interval for the population variance of the talking time.
+
+\subsection{Problem}
+In a wedding restaurant, guests are offered Coca Cola and Pepsi. The probability that a guest chooses Coca Cola is $p$.
+
+\begin{itemize}
+  \item [a)] (10) Using the maximum likelihood method, determine an estimator for the parameter $p$.
+\item [b)] At one wedding, 55 guests out of 100 ordered Pepsi.
+\item [b1)] (3) Determine an estimate for $p$ using MLE.
+\item [b2)] (15) Test the hypothesis that the proportion of Coca Cola orders is $0.5$ against the alternative that the proportion is less than 0.5, at $\alpha = 0.05$.
+\end{itemize}
+
+
+\subsection{Problem}
+We want to analyze whether the sale of Groupon coupons depends on the size of the discount. In the table below, the discount percentages for 12 products and the number of coupons sold for each product are given.
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+                     & 1    & 2    & 3    & 4    & 5    & 6    & 7    & 8    & 9    & 10   & 11   & 12    & $\Sigma$ \\ \hline
+Discount $p_i$ (\%)  & 38   & 73   & 53   & 45   & 36   & 69   & 41   & 53   & 65   & 47   & 52   & 36    & 608      \\ \hline
+No. of sold products & 4    & 28   & 21   & 9    & 6    & 25   & 9    & 4    & 16   & 99   & 23   & 165   & 409      \\ \hline
+$p_i^2$              & 1444 & 5329 & 2809 & 2025 & 1296 & 4761 & 1681 & 2809 & 4225 & 2209 & 2704 & 1296  & 32588    \\ \hline
+$x_i^2$              & 16   & 784  & 441  & 81   & 36   & 625  & 81   & 16   & 256  & 9801 & 529  & 27225 & 39891    \\ \hline
+$p_i \cdot x_i$      & 152  & 2044 & 1113 & 405  & 216  & 1725 & 369  & 212  & 1040 & 4653 & 1196 & 5940  & 19065    \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Find the 95\% confidence interval for the average number of coupons sold. Assume that the data is normally distributed.
+
+
+
+\subsection{Problem}
+A researcher wants to determine the average time needed by a mechanic to change car tires.
+\begin{itemize}
+  
+\item [a)] If he assumes that $\sigma = 6.1$ minutes, what sample size should be taken to estimate the average time with 95\% confidence, such that the estimate deviates at most 0.5 minutes from the true mean?
+
+\item [b)]  Then he took a sample of size 51 and obtained a sample standard deviation of 1.5 minutes. At $5\%$ significance level, can it be considered that the previous assumption about the standard deviation was reasonable?
+
+\end{itemize}
+
+\subsection{Problem}
+The amount of water consumed in a family has a normal distribution. Let $x_k$ denote the amount of water consumed in one day, and $n_k$ denote the number of days in which $x_k$ liters of water were consumed.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$x_k$ & 2.5 & 7.5 & 12.5 & 17.5 & 22.5 & 27.5 & 32.5 \\ \hline
+$n_k$ & 1   & 3   & 4    & 8    & 6    & 4    & 2    \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+  \item [a)] Calculate a $95\%$ confidence interval for the average daily water consumption.
+
+  \item [b)] Test the hypothesis that the average daily water consumption is 24 liters at significance level $\alpha = 0.05$.
+\end{itemize}
+
+Additional calculations for assistance:
+
+\[
+\bar{x} = 18.75, \quad s^2 = 58.5648, \quad s = 7.6528
+\]
+
+
+\end{document}

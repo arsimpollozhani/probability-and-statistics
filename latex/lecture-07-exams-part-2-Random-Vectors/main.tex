@@ -1,0 +1,479 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+
+\usepackage{setspace}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{newtxtext}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{8pt}
+
+\onehalfspacing
+
+
+\begin{document}
+
+\section*{Random vectors}
+
+
+
+\subsection*{Task [11.2025]}
+You are on the ground floor of a building with four more floors. Dr. House office is not on the ground
+floor, but on one of those four floors. You take the elevator and randomly choose a floor to check if
+the office is there. If it is not, you again randomly choose among the remaining unvisited floors and
+continue until you find it. In the end, you learn that the office is on the third floor.
+Let X be the number of floors visited until the office is found, and let Y take the value 1 if the fourth
+floor was visited, and 0 otherwise.
+
+\begin{itemize}
+    \item [a)] Determine the probability distribution law of the vector $(X, Y )$.
+    \item [b)] Determine the marginal distributions of $X$ and $Y$ .
+    \item [c)] Calculate $P\{X \leq 2|Y = 1\}$.
+    \item [d)] Are X and Y independent?
+
+\end{itemize}
+
+\subsection*{Task [11.2025]}
+You are on the ground floor of a building with five more floors. Dr. House office is not on the ground
+floor, but on one of those five floors. You take the elevator and randomly choose a floor to check if
+the office is there. If it is not, you again randomly choose among the remaining unvisited floors and
+continue until you find it. In the end, you learn that the office is on the fourth floor.
+Let X be the number of floors visited until the office is found, and let Y take the value 1 if the first
+floor was visited, and 0 otherwise.
+\begin{itemize}
+    \item [a)] Determine the probability distribution law of the vector $(X, Y )$.
+\item [b)] Determine the marginal distributions of $X$ and $Y$ .
+\item [c)] Calculate $P\{X \geq 2|Y = 0\}$.
+\item [d)] Are $X$ and $Y$ independent?
+\end{itemize}
+
+
+\subsection*{Task [11.2025]}
+In a box, there are 4 slips with the number 3 written on them and 3 slips with the number 4 written on them. Two slips are drawn simultaneously from the box. Then, if the numbers on the drawn slips are equal, a die is rolled 3 times; if the numbers on the drawn slips are different, the die is rolled 2
+times. Let Y be the random variable - number of die rolls, and X be the random variable - number of
+outcomes from the die roll(s) in which the number on the die is less than 5.
+\begin{itemize}
+    \item [a)] (10) Determine the probability distribution law of the random vector $(X, Y )$.
+    \item [b)] (2) Determine the marginal distribution of the random variable X.
+    \item [c)] (3) Determine the conditional distribution $X|\{Y = 2\}$.
+\end{itemize}
+
+\subsection*{Task [11.2025]}
+In a box, there are 5 slips with the number 1 written on them and 3 slips with the number 2 written
+on them. Two slips are drawn simultaneously from the box. Then, if the numbers on the drawn slips
+are equal, a die is rolled 2 times; if the numbers on the drawn slips are different, the die is rolled 3
+times. Let X be the random variable - number of die rolls, and Y be the random variable - number of
+outcomes from the die roll(s) in which the number on the die is even.
+\begin{itemize}
+    \item [a)] (10) Determine the probability distribution law of the random vector $(X, Y )$.
+\item [b)] (2) Determine the marginal distribution of the random variable Y .
+\item [c)] (3) Determine the conditional distribution $X|\{Y = 1\}$.
+\end{itemize}
+
+\subsection*{Task: Chocolates 1 [11.2024]}
+
+A store is running a promotion selling three types of chocolates, packaging them in sets of 5. Each combination of chocolates in a package is equally likely. Nino bought one package. From each type present in the package, he will eat either one or none of the chocolates. (For example, if the package contains 2 chocolates of the first type and 3 of the second, he may eat none, eat only one of the first type, eat only one of the second type, or eat two (one of each type)). He will eat exactly one chocolate with probability 0.75.
+Let $X$ be the random variable representing the number of different types of chocolates, and $Y$ the random variable representing the number of chocolates Nino ate.
+
+\begin{itemize}
+    \item [a)] (3+3) Calculate the number of different possible packages and the number of different packages containing at least one chocolate of each type.
+
+    \item [b)] (5+10) Determine the probability distribution of $X$ and the joint probability distribution of $(X,Y)$
+
+    \item [c)] (5) Determine the probability distribution of $X$, given that Nino did not eat any chocolates.
+\end{itemize}
+
+
+
+\subsection{Task: Chocolates 2 [11.2024]}
+
+A store is running a promotion selling three types of chocolates, packaging them in sets of 5. Each combination of chocolates in a package is equally likely. Nino bought one package. From each type present in the package, he will eat either one or none of the chocolates. (For example, if the package contains 2 chocolates of the first type and 3 of the second, he may eat none, eat only one of the first type, eat only one of the second type, or eat two (one of each type)). He will eat exactly one chocolate with probability 0.6.
+Let $X$ be the random variable representing the number of different types of chocolates, and $Y$ the random variable representing the number of chocolates Nino ate.
+
+\begin{itemize}
+    \item [a)] (3+3) Calculate the number of different possible packages and the number of different packages containing at least one chocolate of each type.
+
+    \item [b)] (5+10) Determine the probability distribution of $X$ and the joint probability distribution of $(X, Y)$.
+
+    \item [c)] (5) Determine the probability distribution of $X$, given that Nino ate exactly one chocolate.
+\end{itemize}
+
+\subsection*{Task: Interview [06.2025]}
+
+In a selection process, a candidate appears for three interviews, one after the other, where each interview can be successful or unsuccessful. Each interview is successful with probability $1/3$, independently of the others. Let $X$ be the number of successful interviews in the first two interviews, and $Y$ be the total number of successful interviews from all three.
+
+\begin{itemize}
+\item [a)] (8) Determine the joint probability distribution of the random vector $(X, Y)$.
+\item [b)] (2) Determine the marginal distribution of the random variable $X$.
+\item [c)] (1) Are the random variables $X$ and $Y$ independent?
+\item [d)] (2) Determine the correlation coefficient of $X$ and $Y$.
+\end{itemize}
+
+\subsection*{Task: Interview [06.2025]}
+
+In a selection process, a candidate appears for three interviews, one after the other, where each interview can be successful or unsuccessful. Each interview is successful with equal probability $1/4$, independently of the others. Let $X$ be the number of successful interviews in the first two interviews, and $Y$ be the total number of unsuccessful interviews from all three.
+
+\begin{itemize}
+
+\item [a)] (8) Determine the joint probability distribution of the random vector $(X, Y)$.
+\item [b)] (2) Determine the marginal distribution of the random variable $X$.
+\item [c)] (1) Are the random variables $X$ and $Y$ independent?
+\item [d)] (2) Determine the correlation coefficient of $X$ and $Y$.
+
+\end{itemize}
+
+
+
+\subsection*{Task: Call center [01.2025]}
+
+In a call center, there are $5$ employees, of which two are experienced and three are inexperienced. To handle a given call, two employees are randomly selected to answer the call. If two experienced employees answer the call, the customer's requirements are met in $95\%$ of cases. If two inexperienced employees answer the call, the customer's requirements are met in $60\%$ of cases. And, if one experienced and one inexperienced employee answer the call, the customer's requirements are met in $75\%$ of cases. Let $X$ be the number of selected experienced employees to answer a given call, and $Y$ be the indicator of the event "the customer's requirements are met".
+
+\begin{itemize}
+    \item [a)] Determine the joint probability distribution of $(X, Y)$.
+    \item [b)] Determine the marginal probability distribution of $Y$.
+    \item [c)] Are $X$ and $Y$ independent random variables?
+    \item [d)] Determine $cov(X, Y)$.
+\end{itemize}
+
+
+\subsection*{Task: Urgency center [01.2025]}
+
+In an emergency center, there are 5 doctors, of which two are more experienced and three are less experienced. To examine a given patient, two doctors are randomly selected to examine the patient. If two more experienced doctors examine the patient, the patient receives the appropriate therapy in $90\%$ of cases. If two less experienced doctors examine the patient, the patient receives the appropriate therapy in $75\%$ of cases. And, if one more experienced and one less experienced doctor examine the patient, the patient receives the appropriate therapy in $85\%$ of cases. Let $X$ be the number of selected more experienced doctors to examine the given patient, and $Y$ be the indicator of the event "the patient received the appropriate therapy".
+
+\begin{itemize}
+    \item [a)] Determine the joint probability distribution of $(X, Y)$.
+    \item [b)] Determine the marginal probability distribution of $Y$.
+    \item [c)] Are $X$ and $Y$ independent random variables?
+    \item [d)] Determine $cov(X, Y)$.
+\end{itemize}
+
+
+\subsection*{Task: Drunk man [02.2024]}
+
+A drunk man wanders randomly in a large space. At each step, he moves one unit of distance north, south, east, or west, with equal probabilities (he does not stay in place). Let his initial position have coordinates $(0,0)$. If $X_1$ is the x-coordinate of his position after the first step, and $X_2$ is the x-coordinate of his position after the second step, determine:
+
+\begin{itemize}
+    \item [a)] (9) The joint probability distribution of $(X_1, X_2)$
+\item [b)] (4) Covariance of $(X_1, X_2)$
+\item [c)] (3) Distribution of random variable $Z = X_1 + X_2$
+\end{itemize}
+
+
+
+\subsection*{Task: Drunk man [02.2024]}
+
+A drunk man wanders randomly in a large space. At each step, he moves one unit of distance north, south, east, or west, with equal probabilities (he does not stay in place). Let his initial position have coordinates $(1,1)$. If $Y_1$ is the y-coordinate of his position after the first step, and $Y_2$ is the y-coordinate of his position after the second step, determine:
+
+\begin{itemize}
+    \item [a)] (9) The joint probability distribution of $(Y_1, Y_2)$
+\item [b)] (4) The covariance of $(Y_1, Y_2)$
+\item [c)] (3) The distribution of the random variable $Z = Y_1 + Y_2$
+\end{itemize}
+
+
+\subsection*{Task: Coin toss [09.2024]}
+
+(6+6+2+2) A fair coin is tossed three times. Let $X$ be the number of tails in the first two tosses, and $Y$ be the total number of heads.
+
+\begin{itemize}
+    \item  [a)] (6) Determine the joint probability distribution of the vector $(X, Y)$.
+\item  [b)] (4) Determine the marginal distributions of $X$ and $Y$.
+\item  [c)] (3) Determine the conditional distribution of $Y$ given the condition $\{X = 1\}$.
+\item  [d)] (2) Determine the expected value and variance of $Y$.
+\item  [e)] (1) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+
+\subsection*{Task: Coin toss [09.2024]}
+
+(6+6+2+2) A fair coin is tossed three times. Let $X$ be the number of tails in the first two tosses, and $Y$ be the total number of heads.
+
+
+\begin{itemize}
+\item  [a)] (6) Determine the joint probability distribution of the vector $(X, Y)$.
+\item  [b)] (4) Determine the marginal distributions of $X$ and $Y$.
+\item  [c)] (3) Determine the conditional distribution of $Y$ given the condition $\{Y = 2\}$.
+\item  [d)] (2) Determine the expected value and variance of $X$.
+\item  [e)] (1) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+
+\subsection*{Task: Balls [06.2024]}
+
+In a box there are 5 balls labeled with numbers from 1 to 5. Two balls are drawn at random at once and then returned to the box. The experiment is repeated 2 times. The random variable $X$ denotes the number of drawn balls with the number 1, and $Y$ denotes the number of drawn balls with the number 2.
+
+\begin{itemize}
+ \item   [A)] Determine the probability distribution of the random vector $(X, Y)$.
+\item [B)] Determine the marginal distribution of X.
+\item [C)] Determine $P\{X + Y \leq 2\}$.
+\item [D)] Determine $P\{X \leq 2 | Y \geq 1\}$.
+\end{itemize}
+
+
+\subsection*{Task: Balls [06.2024]}
+
+In a box there are 4 balls labeled with numbers from 1 to 4. Two balls are drawn at random at once and then returned to the box. The experiment is repeated 2 times. The random variable $X$ denotes the number of drawn balls with the number 1, and $Y$ denotes the number of drawn balls with the number 2.
+
+\begin{itemize}
+ \item   [A)] Determine the probability distribution of the random vector $(X, Y)$.
+\item [B)] Determine the marginal distribution of $X$.
+\item [C)] Determine $P\{X + Y \leq 2\}$.
+\item [D)] Determine $P\{X \leq 2 | Y \geq 1\}$.
+\end{itemize}
+
+
+\subsection*{Task: [11.2023]}
+
+In a box there are four balls labeled with the numbers 0, 1, 2, and 3. From the box, balls are drawn one by one, without replacement, at random, until the sum of the numbers on the drawn balls becomes an even number (Explanation: If a ball with an even number is drawn on the first draw, the drawing ends). Let $X$ be the random variable - number of draws, and $Y$ be the random variable - sum of the numbers on the drawn balls when the drawing ends.
+
+\begin{itemize}
+    \item [a)] (9) Determine the probability distribution law of the random vector $(X, Y)$.
+    \item [b)] (2) Determine the marginal distribution of the random variable $X$.
+    \item [c)] (2) Calculate $P\{X \leq 3 | Y < 3\}$.
+    \item [d)] (2) Calculate $F(2.5, 3.7)$.
+\end{itemize}
+
+\subsection*{Task: [11.2023]}
+
+In a box there are four balls labeled with the numbers 0, 3, 4, and 5. From the box, balls are drawn one by one, without replacement, at random, until the sum of the numbers on the drawn balls becomes an odd number (Explanation: If a ball with an odd number is drawn on the first draw, the drawing ends).  Let $X$ be the random variable - sum of the numbers on the drawn balls when the drawing ends, and $Y$ be the random variable - number of draws
+
+\begin{itemize}
+    \item [a)] (9) Determine the probability distribution law of the random vector $(X, Y)$.
+    \item [b)] (2) Determine the marginal distribution of the random variable $X$.
+    \item [c)] (2) Calculate $P\{X > 5 | Y < 3\}$.
+    \item [d)] (2) Calculate $F(4.2, 2.5)$.
+\end{itemize}
+
+\subsection*{Task: Data Scientist [06.2023]}
+
+Imagine you are a Data Scientist working for a company specialized in analyzing customer behavior. Each customer analyzed during one month makes orders from a website until they complain and return an order or until they make 3 orders. The customer complains (returns orders) in $1/5$ of their purchases. After each order, they can write at most one comment about the purchased product. The customer writes a comment with probability $1/4$. Each comment is written independently of previous ones and independently of the orders made. Let the random variable $X$ denote the number of orders made, and $Y$ the number of comments written.
+
+\begin{itemize}
+\item [a)] (10) Determine the distribution of the random vector $(X, Y)$. Explain in detail how $P\{X = 2, Y = 1\}$ is obtained.
+\item [b)] (2) Determine the marginal distribution of the random variable $Y$.
+\item [c)] (3) Determine $P\{X \geq 2 | Y < 2\}$
+\end{itemize}
+
+
+\subsection*{Task: Data Scientist [06.2023]}
+
+Imagine you are a Data Scientist working for a company specialized in analyzing customer behavior. Each customer analyzed during one month makes orders from a website until they complain and return an order or until they make 3 orders. The customer complains (returns orders) in $1/4$ of their purchases. After each order, they can write at most one comment about the purchased product. The customer writes a comment with probability $1/3$. Each comment is written independently of previous ones and independently of the orders made. Let the random variable $X$ denote the number of orders made, and $Y$ the number of comments written.
+
+\begin{itemize}
+\item [a)] (10) Determine the distribution of the random vector $(X, Y)$. Explain in detail how $P\{X = 2, Y = 1\}$ is obtained.
+\item [b)] (2) Determine the marginal distribution of the random variable $X$.
+\item [c)] (3) Determine $P\{Y \geq 2 | X < 3\}$
+\end{itemize}
+
+
+\subsection*{Task: Balls [08.2023]}
+
+(9+3+4) In a box there are 3 white and 7 black balls. From the box, 3 balls are drawn at random without replacement. Let $X$ denote the number of white balls drawn, and $Y$ denote the number of black balls drawn among the three drawn balls.
+
+\begin{itemize}
+    \item [a)] Determine the probability distribution law of the random vector $(X, Y)$
+    \item [b)] Calculate $P\{X \leq Y\}$
+    \item [c)] Calculate $E(XY)$
+\end{itemize}
+
+
+\subsection*{Task: Balls [08.2023]}
+
+(9+3+4) In a box there are 4 white and 6 black balls. From the box, 3 balls are drawn at random without replacement. Let $X$ denote the number of white balls drawn, and $Y$ denote the number of black balls drawn among the three drawn balls.
+
+\begin{itemize}
+    \item [a)] Determine the probability distribution law of the random vector $(X, Y)$
+    \item [b)] Calculate $P\{X \geq Y\}$
+    \item [c)] Calculate $E(XY)$
+\end{itemize}
+
+
+
+\subsection*{Task: Coins [11.2022]}
+
+A coin is tossed 3 times. If the same side appears in all three tosses, the coin is tossed one more time. We define the random variables:
+\begin{itemize}
+    \item [] $X$: number of tails that appear,
+    \item [] $Y$: number of times the coin is tossed.
+\end{itemize}
+
+\begin{itemize}
+    \item [a)] (9) Find the probability distribution of the random vector $(X, Y)$. For several probabilities in the distribution, explain in detail how they were obtained;
+    \item [b)] (2) Find the marginal distributions of $X$ and $Y$;
+    \item [c)] (2) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+
+
+\subsection*{Task: Coins [11.2022]}
+
+A coin is tossed 3 times. If the three sides that land are not all the same, the coin is tossed one more time. We define the random variables:
+\begin{itemize}
+    \item [] $X$: number of tails that appear,
+    \item [] $Y$: number of times the coin is tossed.
+\end{itemize}
+
+\begin{itemize}
+    \item [a)] (9) Find the probability distribution of the random vector $(X, Y)$. For several probabilities in the distribution, explain in detail how they were obtained;
+    \item [b)] (2) Find the marginal distributions of $X$ and $Y$;
+    \item [c)] (2) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+
+
+\subsection*{Task: Balls [08.2022]}
+
+In each of four boxes, there are 3 white and 2 black balls. From the first box, one ball is drawn at random. If the ball is white, the experiment ends. If it is black, a ball is drawn at random from the second box, and so on. After drawing from the fourth box, the experiment definitely ends. Let the random variable $X$ denote the number of boxes from which a ball was drawn, and $Y$ the number of drawn white balls.
+
+\begin{itemize}
+    \item [a)] (12) Determine the probability distribution law of the vector $(X, Y)$.
+    \item [b)] (2+2) Determine the marginal distributions of $X$ and $Y$.
+    \item [c)] (2+2) Determine the expected value and variance of $Y$.
+    \item [d)] (3) Determine $P\{2 \leq X < 4, 1 \leq Y \leq 2 \}$.
+    \item [e)] (2) Are $X$ and $Y$ independent random variables?
+
+\end{itemize}
+
+
+
+\subsection*{Task: Balls [08.2022]}
+
+In each of four boxes, there are 3 white and 4 black balls. From the first box, one ball is drawn at random. If the ball is black, the experiment ends. If it is white, a ball is drawn at random from the second box, and so on. After drawing from the fourth box, the experiment definitely ends. Let the random variable $X$ denote the number of boxes from which a ball was drawn, and $Y$ the number of drawn black balls.
+
+\begin{itemize}
+    \item [a)] (12) Determine the probability distribution law of the vector $(X, Y)$.
+    \item [b)] (2+2) Determine the marginal distributions of $X$ and $Y$.
+    \item [c)] (2+2) Determine the expected value and variance of $Y$.
+    \item [d)] (3) Determine $P\{2 \leq X < 4, 1 \leq Y \leq 2 \}$.
+    \item [e)] (2) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+
+
+\subsection*{Task: Balls [02.2022]}
+
+In a game, a player first draws one ball from a box containing an equal number of balls labeled with even numbers and odd numbers. Then, if the drawn ball is even, he shoots at a target twice; if it is odd, he shoots once. The player hits the target with probability $1/4$. For each hit, he gets 2 points in the game, while for each miss he gets no points. Let $X$ be the random variable - number of shots, and $Y$ be the random variable - points earned in the game.
+
+\begin{itemize}
+\item [a)] (12) Determine the probability distribution of the random vector $(X, Y)$. Explain in detail how $P\{X=2, Y=2\}$ is obtained.
+\item [b)] (4) Determine the marginal distribution of the random variable $Y$.
+\item [c)] (4) Determine $F(1.75, 2.25)$ where $F(x, y)$ is the joint cumulative distribution function of the random vector $(X, Y)$.
+\item [d)] (5) Determine $P\{X > 1 | Y \leq 2\}$.
+\end{itemize}
+
+
+
+\subsection*{Task: Balls [02.2022]}
+
+In a game, a player first draws one ball from a box containing an equal number of balls labeled with even numbers and odd numbers. Then, if the drawn ball is even, he shoots at a target twice; if it is odd, he shoots once. The player hits the target with probability $1/3$. For each hit, he gets 3 points in the game, while for each miss he gets no points. Let $X$ be the random variable - number of shots, and $Y$ be the random variable - points earned in the game.
+
+\begin{itemize}
+\item [a)] (12) Determine the probability distribution of the random vector $(X, Y)$. Explain in detail how $P\{X=2, Y=3\}$ is obtained.
+\item [b)] (4) Determine the marginal distribution of the random variable $Y$.
+\item [c)] (4) Determine $F(1.75, 2.25)$ where $F(x, y)$ is the joint cumulative distribution function of the random vector $(X, Y)$.
+\item [d)] (5) Determine $P\{X > 1 | Y \leq 3\}$.
+\end{itemize}
+
+
+\subsection*{Task: Coordinates [06.2022]}
+
+A particle moves in a plane starting from the point $(2, 1)$ in a rectangular coordinate system. At each step, it moves one unit to the left with probability $1/4$, one unit up with probability $1/3$, or stays in the same position with probability $5/12$. Each movement is independent of previous ones. “Movement” includes staying in the same position. Let the random variable $X$ be the number of moves to the left after two movements, and the random variable $Y$ be the x-coordinate of the particle after 2 movements. Determine:
+
+\begin{itemize}
+   \item [a)] (10) Determine the probability distribution of the random vector $(X, Y)$. Explain how $P\{X = 2, Y = 1\}$ is obtained.
+   \item [b)] (5) Determine the marginal distribution of $Y$.
+   \item [c)] (5) Determine $P\{X \leq 1 | Y < 2\}$
+   \item [d)] (5) Determine the distribution of the random variable $Z = X + Y$
+\end{itemize}
+
+
+\subsection*{Task: Coordinates [06.2022]}
+
+A particle moves in a plane starting from the point $(3, 1)$ in a rectangular coordinate system. At each step, it moves one unit to the left with probability $1/3$, one unit up with probability $1/4$, or stays in the same position with probability $5/12$. Each movement is independent of previous ones. “Movement” includes staying in the same position. Let the random variable $X$ be the number of moves to the left after two movements, and the random variable $Y$ be the x-coordinate of the particle after 2 movements. Determine:
+
+\begin{itemize}
+   \item [a)] (10) Determine the probability distribution of the random vector $(X, Y)$. Explain how $P\{X = 2, Y = 2\}$ is obtained.
+   \item [b)] (5) Determine the marginal distribution of $Y$.
+   \item [c)] (5) Determine $P\{X \leq 1 | Y < 3\}$
+   \item [d)] (5) Determine the distribution of the random variable $Z = X + Y$
+\end{itemize}
+
+
+\subsection*{Task: Coordinates [08.2021]}
+
+A particle moves in a plane starting from the point $(1, 1)$. At each step, it moves one unit to the right with probability $1/3$, one unit down with probability $1/2$, or stays in the same position with probability $1/6$. Each movement is independent of previous ones. “Movement” includes staying in place. Let the random vector $(X, Y)$ determine the position of the particle after 2 movements. Determine:
+
+\begin{itemize}
+    \item [a)] (10) the probability distribution law of the vector $(X, Y)$;
+\item [b)] (5) the conditional distribution of $Y$ given $\{X \leq 2\}$;
+\item [c)] (3) the covariance of $X$ and $Y$;
+\item [d)] (7) the distribution of the random variable $Z = X + Y$.
+\end{itemize}
+
+
+\subsection*{Task [11.2020]}
+
+In a box there are 5 slips with the number 1 written on them and 3 slips with the number 3 written on them. From the box, without replacement, slips are drawn until the sum of the numbers on the drawn slips exceeds 4. Let $X$ be the random variable number of draws, and $Y$ be the random variable sum of the numbers from the drawn slips.
+
+\begin{itemize}
+
+\item [a)] (15) Determine the probability distribution law of the vector $(X, Y)$;
+\item [b)] (5) Determine the conditional distribution $X|\{Y=5\}$.
+\item [c)] (7) Determine $P{X \geq 3 | Y < 7}$.
+\item [d)] (3) Are X and Y independent random variables?
+\item [e)] (5) Determine $F(3.7, 4.5)$, where $F(x, y)$ is the cumulative distribution function of the random vector $(X, Y)$.
+
+
+\end{itemize}
+
+
+
+\subsection*{Task [11.2021]}
+In a game, a player draws two cards simultaneously from a box containing 4 red and 6 green cards. Then, depending on the color of the drawn cards, he continues the game in one of the following ways:
+
+\begin{itemize}
+    \item If he draws cards of different colors, then the player rolls a die once.
+    \item If he draws two cards of the same color, then the player rolls a die twice.
+\end{itemize}
+
+Let $X$ be the random variable representing the number of die rolls the player makes, and $Y$ be the random variable representing how many of the numbers that appear in the die roll(s) are divisible by 3.
+
+\begin{itemize}
+\item [a)] (15) Determine the probability distribution of the random vector $(X, Y)$. Explain in detail how $P{X=2, Y=1}$ is obtained.
+\item  [b)] (5) Determine the marginal distribution of the random variable Y.
+\item  [c)] (5) Determine $F(2.1, 0.5)$, where $F(x, y)$ is the cumulative distribution function of the random vector $(X, Y)$.
+\item  [d)] (7) Determine $P{X \geq 1 | Y < 2}$.
+\item  [e)] (3) Are $X$ and $Y$ independent random variables?
+\end{itemize}
+
+\subsection*{Task: [02.2021]}
+
+At a competition, an archer draws two balls simultaneously from a box. The box contains 2 balls marked with the number 0 and 3 balls marked with the number 1. Then, the archer shoots at a target as many times as the sum of the numbers on the drawn balls. In each shot, the archer hits the target with probability $1/4$. Let $X$, $Y$ be random variables: $X$ the number of shots by the archer, $Y$ the number of hits by the archer.
+
+\begin{itemize}
+    \item [a)] (12) Determine the distribution of $(X, Y)$. Explain how $\{X=2, Y=1\}$ is obtained.
+\item [b)] (4) Determine the marginal distribution of $X$.
+\item [c)] (4) Determine $P\{X \geq 1 | Y < 2\}$.
+\item [d)] (5) Determine $E(Y | X=2)$.
+\end{itemize}
+
+
+\subsection*{Task [06.2021]}
+
+A gambler has 4 packs of cards, with each pack containing an equal number of red, blue, and green cards. At the start of the game, he pays 2 dollars, then draws one card from each pack. He wins 3 dollars if he draws 2 red cards, 5 dollars if he draws 3 red cards, and 10 dollars if he draws 4 red cards. Let $X$ be the random variable  the gambler's profit, and $Y$ be the random variable the number of blue cards drawn.
+
+\begin{itemize}
+\item  [a)]  (12) Determine the probability distribution of the random vector $(X, Y)$.
+\item  [b)] (5) (3) Are $X$ and $Y$ independent random variables?.
+\item  [c)] (5) What is the probability that the gambler will have a positive profit if he drew more than one blue card?
+\item  [d)] (5) What is the expected profit of the gambler?
+\end{itemize}
+
+\end{document}

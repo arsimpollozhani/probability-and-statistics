@@ -1,0 +1,426 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+
+\usepackage{setspace}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{newtxtext}
+
+\setlength{\parindent}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{8pt}
+
+\onehalfspacing
+
+
+\begin{document}
+
+
+\subsection*{Total Probability and Bayes Theorem}
+
+\subsection*{Task: Dice [11.2025]}
+
+Die A has $3$ red and $4$ blue sides, and die B has $3$ red and $2$ blue sides. A coin is tossed, and if it lands on heads, die B is rolled, and if it lands on tails, die A is rolled.
+
+\begin{itemize}
+    \item [a)](6) Find the probability that a blue color appears when the die is rolled.
+    \item [b)](8) The experiment is repeated $n$ times (first a coin is tossed, and then the corresponding die is rolled). If in the $n$ rolls, a blue color appeared $n$ times, find the probability that die A was rolled at least once.
+
+\end{itemize}
+
+\subsection*{Task: Frogs [11.2025]}
+
+A researcher is observing a colony of $6$ rare frogs in a rainforest. During the night, each frog will either call out (croak) with probability $0.7$ or remain silent, independently of the others.
+The next morning, the researcher checks whether a predator bird that reacts to the frogs' sounds has appeared. The probability of the bird appearing is proportional to the number of frogs that croaked. (Clarification: If $k$ frogs croaked, the probability that the bird appears is $k/(1+2+ \dots +6) = k/21$)
+
+
+
+\subsection*{Task: System checks 1 [06.2025]}
+
+In a system, $3$ checks are made on the user's activity during the day. In each check, unusual behavior is detected with a probability of $0.3$. The checks are independent of each other. If exactly $2$ checks detect unusual behavior, the user will be blocked with a probability of $0.5$. If exactly $3$ checks detect unusual behavior, the user will be blocked with a probability of $0.8$. In cases where only one check detects unusual behavior or if no checks detect unusual behavior, the user will not be blocked.
+
+\begin{itemize}
+    \item [a)] (6) Determine the probability that the user will be blocked.
+    \item [b)] (2) If the user was not blocked, determine the probability that there were exactly $2$ detections of unusual behavior.
+\end{itemize}
+
+
+\subsection*{Task: System checks 2 [06.2025]}
+
+
+In a system, $4$ checks are made on the user's activity during the day. In each check, unusual behavior is detected with a probability of $0.3$. The checks are independent of each other. If exactly $3$ checks detect unusual behavior, the user will be blocked with a probability of $0.6$. If exactly $4$ checks detect unusual behavior, the user will be blocked with a probability of $0.9$. In cases where fewer than three checks detect unusual behavior or if no checks detect unusual behavior, the user will not be blocked.
+
+\begin{itemize}
+    \item [a)] (6) Determine the probability that the user will be blocked.
+    \item [b)] (2) If the user was not blocked, determine the probability that there were exactly $3$ detections of unusual behavior.
+\end{itemize}
+
+
+\subsection*{Task: Support call center 1: [2.2025]}
+
+In a user support center, calls from users arrive at an average rate of $3$ calls per hour. It is assumed that the number of calls arriving in one hour follows a $Poisson$ distribution $P(3)$. To improve the user experience, the support center has implemented the following policy:
+
+\begin{itemize}
+    \item If at most $2$ calls arrive in an hour, no alarm state is declared.
+
+\item If $3$ or $4$ calls arrive in an hour, an alarm state is declared if at least $2$ of the calls contain a complaint.
+
+\item If at least $5$ calls arrive in an hour, an alarm state is declared.
+
+\end{itemize}
+
+A call contains a complaint in $5\%$ of cases, independently of the content of other calls.
+
+\begin{itemize}
+    \item What is the probability that the support center declares an alarm state?
+    \item If the support center declared an alarm state, what is the probability that exactly $4$ calls arrived in one hour?
+\end{itemize}
+
+\subsection*{Task: Emergency center [2.2025]}
+
+In an emergency center, patients arrive at an average rate of $4$ patients per hour. It is assumed that the number of arriving patients in one hour follows a $Poisson$ distribution $P(4)$. To improve its service, the emergency center has introduced a policy such that:
+
+If at most $3$ patients arrive in an hour, then an alarm state is not declared.
+
+If $4$ or $5$ patients arrive in an hour, then an alarm state is declared if at least $3$ of the patients are in critical condition.
+
+If at least $6$ patients arrive in an hour, then an alarm state is declared.
+A patient is in critical condition in $10\%$ of cases, independently of the condition of other patients.
+
+\begin{itemize}
+    \item [a)] What is the probability that the emergency center declares an alarm state?
+    \item [b)] If the emergency center declared an alarm state, what is the probability that exactly $5$ patients arrived in an hour?
+\end{itemize}
+
+
+
+
+\subsection*{Task: Shooting at a target [11.2024]}
+
+Alan and Boris shoot at a target one after the other, starting with Alan. The game is won by the one who first hits the target for the third time. Let A be the event: Alan won. Explain whether the given hypotheses can or cannot be used in the formula $P(A)=\sum_{i=0}^{}P(H_i)P(A|H_i)$
+
+\begin{itemize}
+    \item [a)] $H_i$: Alan hits on the $i-th$ shot
+    \item [b)] $H_i$: Boris shot $i$ times
+
+\end{itemize}
+
+
+\subsection*{Task: Game [11.06.2024]}
+
+The friends Petar, Martin, and Lena are playing a game with 2 red, 2 blue, 2 green, and 4 white shells. There can be multiple winners in the game. Without looking, they choose 3 shells so that each of them picks one (they choose the shells at once).
+
+\begin{itemize}
+    \item If among the chosen shells there is at least one red, then Petar is a winner.
+
+    \item If among the chosen shells there is at least one blue, then Martin is a winner.
+
+    \item If among the chosen shells there is at least one green, then Lena is a winner.
+\end{itemize}
+
+\begin{itemize}
+    \item [a)] What is the probability that at least one of the three will not win?
+
+    \item [b)] Vlado is angry at the three friends because they are playing in his yard. He throws a fair die:
+
+\begin{itemize}
+    \item If it lands on number 1, he kicks out Petar.
+
+    \item If it lands on number 2, he kicks out Martin.
+
+    \item If it lands on number 3, he kicks out Lena.
+
+    \item If it lands on number 4, he randomly chooses two of them to kick out.
+
+    \item If it lands on 5 or 6, he kicks out all three of them.
+\end{itemize}
+
+Meanwhile, after the game in part $A)$, they all returned the shells. But Martin ate one shell, and it is not known which one. After this change (with one shell eaten), all three repeat the game, and then Vlado kicks out at least one of them according to the rule above.
+
+What is the probability that Martin wins and still gets kicked out of the yard?
+\end{itemize}
+
+
+
+
+\subsection*{Task: Game [11.06.2024]}
+
+The friends Petar, Martin, and Lena are playing a game with 3 red, 2 blue, 3 green, and 3 white shells. There can be multiple winners in the game. Without looking, they choose 3 shells so that each of them picks one (they choose the shells at once).
+
+\begin{itemize}
+    \item If among the chosen shells there is at least one red, then Petar is a winner.
+
+    \item If among the chosen shells there is at least one blue, then Martin is a winner.
+
+    \item If among the chosen shells there is at least one green, then Lena is a winner.
+\end{itemize}
+
+\begin{itemize}
+    \item [A)] What is the probability that at least one of the three will not win?
+
+    \item [B)] Vlado is angry at the three friends because they are playing in his yard. He throws a fair die:
+
+\begin{itemize}
+    \item If it lands on number 1, he kicks out Petar.
+
+    \item If it lands on number 2, he kicks out Martin.
+
+    \item If it lands on number 3, he kicks out Lena.
+
+    \item If it lands on number 4, he randomly chooses two of them to kick out.
+
+    \item If it lands on 5 or 6, he kicks out all three of them.
+\end{itemize}
+
+Meanwhile, after the game in part $A)$, they all returned the shells. But Martin ate one shell, and it is not known which one. After this change (with one shell eaten), all three repeat the game, and then Vlado kicks out at least one of them according to the rule above.
+What is the probability that Martin wins and still gets kicked out of the yard?
+\end{itemize}
+
+
+
+\subsection*{Task: Housing loan [09.2024]}
+
+In an insurance company, $4000$ doctors, $8000$ teachers, and $12000$ businesspeople are insured. The probability that a doctor, teacher, or businessperson will claim funds from the insurance company due to a serious injury is $0.01$, $0.03$, and $0.02$, respectively.
+
+
+
+\begin{itemize}
+    \item [a)] Determine the probability that a randomly selected insured person will claim funds from the insurance company due to a serious injury.
+    \item [b)] If an insured person claimed funds from the insurance company due to a serious injury, determine the probability that they are a teacher.
+\end{itemize}
+
+
+\subsection*{Task: Housing loan [09.2024]}
+
+In a bank, accounts are held by $3000$ doctors, 6000 teachers, and 9000 businesspeople. The probability that a doctor, teacher, or businessperson will request a housing loan is $0.3$, $0.4$, and $0.2$, respectively.
+
+\begin{itemize}
+    \item [a)] (7) Determine the probability that a randomly selected client will request a housing loan.
+    \item [b)] (5) If a client requested funds for a housing loan, determine the probability that they are a businessperson.
+\end{itemize}
+
+
+
+
+\subsection*{Task: Course 1 [11.2023]}
+
+$45\%$ of FINKI students regularly (attend the exercises and lectures) take Probability and Statistics, while $15\%$ take Probability and Statistics irregularly. The remaining students do not take the course.
+
+The probability that a FINKI student is involved in machine learning, if they regularly took Probability and Statistics, is twice as large as the probability that a student is involved in machine learning, if they irregularly took Probability and Statistics.
+
+Also, the probability that a FINKI student is involved in machine learning, if they regularly took Probability and Statistics, is four times larger than the probability that a FINKI student is involved in machine learning, if they did not take Probability and Statistics.
+
+If a randomly selected FINKI student is involved in machine learning, what is the probability that they regularly took Probability and Statistics?
+
+
+\subsection*{Task: Course 1 [11.2023]}
+
+
+$45\%$ of FINKI students regularly (attend the exercises and lectures) take Advanced Algorithms, while $10\%$ take Advanced Algorithms irregularly. The remaining FINKI students do not take Advanced Algorithms. The probability that a FINKI student is a well-paid programmer if they regularly took Advanced Algorithms is twice as large as the probability that a student is a well-paid programmer if they irregularly took Advanced Algorithms. Also, the probability that a FINKI student is a well-paid programmer if they regularly took Advanced Algorithms is $3$ times larger than the probability that a student is a well-paid programmer if they did not take Advanced Algorithms. If a randomly selected FINKI student is a well-paid programmer, what is the probability that they regularly took Advanced Algorithms?
+
+
+
+\subsection*{Task: Box with balls [08.2023]}
+
+
+(9+3) In one box there are $5$ white, $3$ red, and $2$ green balls, and in another box there are $2$ white, $4$ red, and $3$ green balls. One ball is drawn from the first box and transferred to the second box. Then, $3$ balls are drawn from the second box. If the drawn balls are of different colors, what is the probability that from the first box:
+
+\begin{itemize}
+    \item [a)] we transferred a red ball to the second box
+    \item [b)] we did not transfer a red ball to the second box
+\end{itemize}
+
+
+
+\subsection*{Task: Box with balls [08.2023]}
+
+(9+3) In one box there are $3$ white, $2$ red, and $5$ green balls, and in another box there are $3$ white, $2$ red, and $4$ green balls. One ball is drawn from the first box and transferred to the second box. Then, $3$ balls are drawn from the second box. If the drawn balls are of different colors, what is the probability that from the first box:
+
+\begin{itemize}
+    \item [a)] we transferred a white ball to the second box
+    \item [b)] we did not transfer a white ball to the second box
+\end{itemize}
+
+
+\subsection*{Task: Airplane 1 [11.2022]}
+At an airplane, $5$ projectiles are fired. Each projectile hits the airplane independently of the others with a probability of $0.2$. To shoot down the airplane, it must be hit by at least $3$ projectiles. If $3$ projectiles hit the airplane, it will be shot down with a probability of $0.5$; if $4$ projectiles hit it, it will be shot down with a probability of $0.7$; and if all $5$ projectiles hit the airplane, it will certainly be shot down.
+
+\begin{itemize}
+    \item [a)] Determine the probability that the airplane will be shot down.
+    \item [b)] If it is known that the airplane was shot down, what is the probability that it was hit by $4$ projectiles?
+\end{itemize}
+
+\subsection*{Task: Airplane 2 [11.2022]}
+
+At an airplane, $6$ projectiles are fired. Each projectile hits the airplane independently of the others with a probability of $0.3$. To shoot down the airplane, it must be hit by at least $4$ projectiles. If $4$ projectiles hit the airplane, it will be shot down with a probability of $0.3$; if $5$ projectiles hit it, it will be shot down with a probability of $0.6$; and if all $6$ projectiles hit the airplane, it will certainly be shot down.
+
+\begin{itemize}
+    \item [a)] Determine the probability that the airplane will be shot down.
+    \item [b)] If it is known that the airplane was shot down, what is the probability that it was hit by $5$ projectiles?
+\end{itemize}
+
+
+\subsection*{Task: Set of numbers [08.2022]}
+
+
+From the set $\{1, 2, 3, 4, 5\}$, one number is drawn at random, and then, without replacement, another number is drawn.
+
+\begin{itemize}
+    \item [a)] (7) Determine the probability that the second drawn number is at least $2$ greater than the first.
+    \item [b)] (8) If the second number is at least $2$ greater than the first, determine the probability that the first number is $3$ or $4$.
+\end{itemize}
+
+
+\subsection*{Task: Set of numbers [08.2022]}
+
+From the set $\{1, 2, 3, 4, 5, 6\}$, one number is drawn at random, and then, without replacement, another number is drawn.
+
+\begin{itemize}
+    \item [a)] (7) Determine the probability that the second drawn number is at least $3$ less than the first.
+    \item [b)] (8) If the second number is at least $3$ less than the first, determine the probability that the first number is $4$ or $5$.
+\end{itemize}
+
+
+
+
+
+\subsection*{Task: Marathon [06.2022]}
+
+A competitor in a sporting event first runs a $5$-kilometer marathon and then shoots at a target. It is known that the competitor finishes the marathon with equal probability between $20$ and $34$ minutes. Then, depending on the time taken to finish the marathon, they shoot a different number of times at the target.
+
+\begin{itemize}
+    \item If the competitor finishes the marathon in less than $23$ minutes, they shoot $5$ times at the target.
+
+\item If they finish the marathon between $23$ and $29$ minutes (inclusive), they shoot $4$ times.
+
+\item If they finish in more than $29$ minutes, they shoot $2$ times.
+\end{itemize}
+
+The competitor hits the target with a probability of $\frac{1}{3}$ in each shot, independently of the other shots.
+
+\begin{itemize}
+    \item [a)] (15) Determine the probability that the competitor hits the target exactly $2$ times.
+    \item [b)] (10) Determine the probability that the competitor finished the marathon in less than $23$ minutes, given that they hit the target exactly $2$ times.
+\end{itemize}
+
+
+\subsection*{Task: Marathon [06.2022]}
+
+A competitor in a sporting event first runs a $5$-kilometer marathon and then shoots at a target. It is known that the competitor finishes the marathon with equal probability between $21$ and $36$ minutes. Then, depending on the time taken to finish the marathon, they shoot a different number of times at the target.
+
+\begin{itemize}
+    \item If the competitor finishes the marathon in less than $25$ minutes, they shoot $5$ times at the target.
+
+    \item If they finish the marathon between $25$ and $31$ minutes (inclusive), they shoot $4$ times.
+
+    \item If they finish in more than $31$ minutes, they shoot $2$ times.
+\end{itemize}
+
+The competitor hits the target with a probability of $\frac{1}{3}$ in each shot, independently of the other shots.
+
+\begin{itemize}
+    \item [a)] (15) Determine the probability that the competitor hits the target exactly $2$ times.
+\item [b)] (10) Determine the probability that the competitor finished the marathon in less than $25$ minutes, given that they hit the target exactly $2$ times.
+\end{itemize}
+
+
+
+
+\subsection*{Task: Computer modules [02.2022]}
+
+To measure the quality of a computer program that students are developing as a project, a professor conducts two tests. Each project either passes the test or not. If a project successfully passes the first test, it proceeds to the second test; otherwise, it does not.
+The two tests are passed independently of each other.
+
+If the main module of the program works correctly, the project passes the test (both the first and the second) with probability 1. If the main module does not work, the project passes the test (both the first and the second) with probability $\frac{1}{4}$
+
+It is also known that the main module of a given project works with probability $\frac{1}{3}$
+
+\begin{itemize}
+    \item [a)] (15) If a random project that passed the first test is selected, what is the probability that its main module is working correctly?
+    \item [b)] (10) If a random project that passed the first test is selected, what is the probability that it will also pass the second test?
+\end{itemize}
+
+
+\subsection*{Task: Computer modules [02.2022]}
+
+To measure the quality of a computer program that students are developing as a project, a professor conducts two tests. Each project either passes the test or not. If a project successfully passes the first test, it proceeds to the second test; otherwise, it does not.
+The two tests are passed independently of each other.
+
+If the main module of the program works correctly, the project passes the test (both the first and the second) with probability 1. If the main module does not work, the project passes the test (both the first and the second) with probability $\frac{1}{5}$
+
+It is also known that the main module of a given project works with probability $\frac{1}{4}$
+
+\begin{itemize}
+    \item [a)] (15) If a random project that passed the first test is selected, what is the probability that its main module is working correctly?
+    \item [b)] (10) If a random project that passed the first test is selected, what is the probability that it will also pass the second test?
+\end{itemize}
+
+
+
+\subsection{Task: [02.2021]}
+A professor has 7 ungraded and 2 graded tests mixed up. He randomly selects 4 out of the total 9 tests.
+If among the selected 4 tests there are exactly 2 graded tests, the professor will finish grading the four
+selected tests in a time uniformly distributed between 8 and 25 minutes. Otherwise, if there are not
+exactly 2 graded tests, he will finish in a time uniformly distributed between 15 and 35 minutes.
+\begin{itemize}
+    
+\item [a)] (8) What is the probability that the professor finishes grading between 18 and 21 minutes, given
+that there are exactly 2 graded tests among the selected ones?
+\item [b)] (12) Determine the probability that the professor finished between 18 and 21 minutes.
+
+\end{itemize}
+
+
+
+\subsection*{Task: Virus [2020-21]}
+
+In a group of people tested for a virus, there are $6$ with a negative test and $4$ with a positive test. To check the testing procedure, $3$ people are randomly selected for re-testing and are placed in the laboratory's waiting room. The laboratory has two rooms for sample collection, so two people are randomly selected from the waiting room and are taken into the rooms.
+
+\begin{itemize}
+    \item [a)] (15) What is the probability that both people taken into the testing rooms have a previous positive test?
+    \item [b)] (10) If both of the selected people taken into the testing rooms have a previous positive test, what is the probability that all three who were placed in the waiting room have a previous positive test?
+\end{itemize}
+
+
+\subsection*{Task: Certificate and ticket [11.2021]}
+
+
+Ana is in front of the concert hall where a concert is being held, for which she bought a ticket. If she does not have her Covid certificate and does not have a ticket, Ana will not attend the concert. The probability that she does not have the ticket is 0.2, while the probability that she does not have her Covid certificate is $0.35$, independently of each other.
+
+If Ana does not have her Covid certificate but has a ticket, she will not attend the concert with probability $0.45$. If Ana has her certificate but does not have a ticket, she will not attend the concert with probability $0.7$. The probability that she will not attend the concert if she has both the certificate and the ticket is $0.85$.
+
+\begin{itemize}
+    \item [a)] (15) What is the probability that Ana will not attend the concert?
+    \item [b)] (10) What is the probability that Ana was missing at least one of the required documents (ticket and Covid certificate), given that Ana did not attend the concert?
+\end{itemize}
+
+
+\subsection*{Task: Covid-19 [06.2021]}
+
+Sometimes the results of a Covid-19 test are not accurate. Test accuracy means that the test detects the true condition of the patient. Let us assume that the test has $99\%$ accuracy and $30\%$ of all people have Covid-19.
+
+\begin{itemize}
+    \item [a)] (10) If a randomly selected patient tests positive, what is the probability that they actually have Covid-19?
+    \item [b)] (10) Determine the probability that out of $10$  independent tests, $3$ will be positive.
+\end{itemize}
+
+
+
+\subsection*{Task: Coins [08.2021]}
+
+Marko has $10$ coins in his pocket. Nine of them are standard coins (with equal chances of landing tails or heads when flipped), and the $10-th$ coin has two heads.
+
+\begin{itemize}
+    \item [a)] (3) If Marko takes one coin out of his pocket, what is the probability that he drew the two-headed coin?
+
+\item [b)] (12) If Marko flips the coin that he randomly drew from his pocket and it shows heads, what is the probability that he chose the two-headed coin?
+
+\item [c)] (5) Suppose Marko flips the chosen coin once more, and on the second flip it lands tails. What is the probability that one of the $9$ regular coins was chosen?
+\end{itemize}
+
+\end{document}
