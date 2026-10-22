@@ -261,9 +261,10 @@ default. Override either value when needed, for example for a custom domain:
 SITE_URL=https://example.io BASE_PATH=/ npm run build
 ```
 
-`public/.nojekyll` is copied into `dist/` so a branch-based deployment can serve the
-`_astro/` directory correctly. This is only a fallback; **Settings → Pages → Source** should
-still be **GitHub Actions**.
+The repository is configured with the Pages build type `workflow`, so Jekyll is never run.
+A root `.nojekyll` is also kept for safety, and `public/.nojekyll` ships the marker inside
+`dist/`. **Settings → Pages → Source** should remain **GitHub Actions**; switching back to
+branch deployment would serve the repository sources instead of the built site.
 
 ## Project structure (code)
 
