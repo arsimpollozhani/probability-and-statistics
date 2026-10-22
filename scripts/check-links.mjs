@@ -8,7 +8,16 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, posix, resolve } from 'node:path';
 
 const distDir = resolve(process.argv[2] ?? 'dist');
-const basePath = (process.env.BASE_PATH ?? '/proba-stats-site').replace(/\/$/, '');
+
+// Keep this in sync with astro.config.mjs: in Actions, the base path follows the
+// repository name unless BASE_PATH is explicitly provided.
+const repoName = (process.env.GITHUB_REPOSITORY ?? '').split('/')[1];
+const defaultBasePath = repoName
+  ? repoName.endsWith('.github.io')
+    ? '/'
+    : `/${repoName}`
+  : '/proba-stats-site';
+const basePath = (process.env.BASE_PATH ?? defaultBasePath).replace(/\/$/, '');
 
 function* walk(dir) {
   for (const name of readdirSync(dir)) {

@@ -4,10 +4,20 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-// GitHub Pages: repo is served at https://<owner>.github.io/proba-stats-site/
-// Override with SITE_URL / BASE_PATH env vars if the repository name changes.
-const SITE_URL = process.env.SITE_URL ?? 'https://arsim.github.io';
-const BASE_PATH = process.env.BASE_PATH ?? '/proba-stats-site';
+// GitHub Pages:
+// - project site: https://<owner>.github.io/<repo>/
+// - user/org site: https://<owner>.github.io/
+// Derive both from GITHUB_REPOSITORY during Actions builds so the base path can
+// never drift from the repository name. Local builds keep the historical default;
+// SITE_URL / BASE_PATH still override everything (e.g. for a custom domain).
+const [repoOwner, repoName] = (process.env.GITHUB_REPOSITORY ?? '').split('/');
+const isUserSite = Boolean(repoName?.endsWith('.github.io'));
+const SITE_URL =
+  process.env.SITE_URL ??
+  (repoOwner ? `https://${repoOwner}.github.io` : 'https://arsim.github.io');
+const BASE_PATH =
+  process.env.BASE_PATH ??
+  (repoName ? (isUserSite ? '/' : `/${repoName}`) : '/proba-stats-site');
 
 /**
  * Markdown authors write internal links as root-absolute (/course/lecture/…) paths.
