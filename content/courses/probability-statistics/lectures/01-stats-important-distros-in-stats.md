@@ -7,14 +7,6 @@ order: 1
 
 ## Why this lecture matters
 
-Test python code:
-```python
-bikes = pd.read_csv(DATA / "bike-hours.csv")
-population = bikes["rentals"].to_numpy()
-mu, sigma = population.mean(), population.std()
-len(population), round(mu, 1), round(sigma, 1)
-```
-
 Almost every statistical procedure asks a question about a quantity we cannot observe directly: the true mean, the true variance, or the difference between two groups. To answer such questions we need probability models for the quantities we **can** compute from data. Four distributions provide most of that machinery:
 
 - the **normal distribution** describes averages and measurement errors;

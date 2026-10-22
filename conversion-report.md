@@ -1,22 +1,35 @@
 # LaTeX → Markdown conversion report
 
-pandoc 3.6.4 · course `probability-statistics` → content/courses/probability-statistics/lectures · assets → public/images/lectures/ · 2026-10-22T11:09:22.026Z
+pandoc 3.6.4 · course `probability-statistics` → content/courses/probability-statistics/lectures · assets → public/images/lectures/ · 2026-10-22T17:27:12.389Z
 
-Converted: **5** · Skipped: **0** · Needs manual review: **0**
+Converted: **6** · Skipped: **0** · Needs manual review: **4**
 
 | Source | Output | Title | Headings tex→md | Inline math tex→md | Display math tex→md | Images tex→md | List items tex→md | KaTeX | Review |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `latex/lecture-01-stats-important-distros-in-stats/main.tex` | `content/courses/probability-statistics/lectures/01-stats-important-distros-in-stats.md` | Important distributions in Statistics | 14→14 | 143→143 | 26→26 | 20→20 | 11→11 | ok | no |
-| `latex/lecture-02-stats-probability-of-random-samples/main.tex` | `content/courses/probability-statistics/lectures/02-stats-probability-of-random-samples.md` | Probability model of random sample. – Central Limit Theorem | 36→36 | 179→178 | 21→21 | 2→2 | 14→14 | ok | no |
-| `latex/lecture-03-stats-estimators/main.tex` | `content/courses/probability-statistics/lectures/03-stats-estimators.md` | Estimators | 13→13 | 82→82 | 5→5 | 3→3 | 12→12 | ok | no |
-| `latex/lecture-04-stats-hypothesis-testing/main.tex` | `content/courses/probability-statistics/lectures/04-stats-hypothesis-testing.md` | Hypothesis testing | 28→28 | 192→192 | 73→73 | 7→7 | 25→25 | ok | no |
-| `latex/lecture-05-stats-non-parameter-tests/main.tex` | `content/courses/probability-statistics/lectures/05-stats-non-parameter-tests.md` | Nonparametric tests – (Pearson's Chi-square test) | 8→8 | 91→91 | 12→12 | 5→5 | 3→3 | ok | no |
+| `latex/lecture-06-exams-part-1-total-probability-and-Bayes-Theorem/main.tex` | `content/courses/probability-statistics/lectures/06-exams-part-1-total-probability-and-Bayes-Theorem.md` | exams part 1 total probability and Bayes Theorem | 29→29 | 155→186 | 0→1 | 0→0 | 76→79 | ok | **YES** |
+| `latex/lecture-07-exams-part-2-Random-Vectors/main.tex` | `content/courses/probability-statistics/lectures/07-exams-part-2-Random-Vectors.md` | exams part 2 Random Vectors | 36→36 | 262→356 | 0→0 | 0→0 | 140→140 | ok | **YES** |
+| `latex/lecture-08-exams-part-3-functions-of-random-variables/main.tex` | `content/courses/probability-statistics/lectures/08-exams-part-3-functions-of-random-variables.md` | exams part 3 functions of random variables | 7→7 | 11→11 | 1→1 | 0→0 | 0→0 | ok | no |
+| `latex/lecture-09-exams-part-4-Central-Limit-Theorem/main.tex` | `content/courses/probability-statistics/lectures/09-exams-part-4-Central-Limit-Theorem.md` | EXAM PROBLEMS: Central Limit Theorem | 35→35 | 158→171 | 0→0 | 0→0 | 23→24 | ok | **YES** |
+| `latex/lecture-10-exams-part-10-Estimators-and-Hypothesis-testing/main.tex` | `content/courses/probability-statistics/lectures/10-exams-part-10-Estimators-and-Hypothesis-testing.md` | EXAM PROBLEMS: Estimators | 34→35 | 126→155 | 19→17 | 0→0 | 23→20 | ok | **YES** |
+| `latex/lecture-11-exams-part-11-Hypothesis-testing/main.tex` | `content/courses/probability-statistics/lectures/11-exams-part-11-Hypothesis-testing.md` | Exam problems: Hypothesis testing | 7→7 | 0→0 | 0→0 | 0→0 | 8→8 | ok | no |
 
 ## Details and warnings
 
-### /home/arsim/proba-stats-site/latex/lecture-01-stats-important-distros-in-stats
+### latex/lecture-06-exams-part-1-total-probability-and-Bayes-Theorem
 
-- 1 \ref target(s): replaced inline with visible "[ref: …]" markers because numbering changes in Markdown
+- count differences: inline math 155→186; display math 0→1; list items 76→79
+
+### latex/lecture-07-exams-part-2-Random-Vectors
+
+- count differences: inline math 262→356
+
+### latex/lecture-09-exams-part-4-Central-Limit-Theorem
+
+- count differences: inline math 158→171; list items 23→24
+
+### latex/lecture-10-exams-part-10-Estimators-and-Hypothesis-testing
+
+- count differences: headings 34→35; inline math 126→155; display math 19→17; list items 23→20
 
 ## Notes
 

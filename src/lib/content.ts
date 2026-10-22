@@ -6,6 +6,7 @@ type MetaEntry = CollectionEntry<'coursesMeta'>;
 /** Known content types, in display order. */
 export const CONTENT_TYPES = {
   lectures: { label: 'Lectures', icon: 'book-open' },
+  exams: { label: 'Exam Problems', icon: 'pencil-line' },
   tutorials: { label: 'Tutorials', icon: 'lightbulb' },
   problems: { label: 'Problem sets', icon: 'pencil-line' },
   reference: { label: 'Reference sheets', icon: 'library' },
@@ -14,6 +15,25 @@ export const CONTENT_TYPES = {
 export type ContentTypeId = keyof typeof CONTENT_TYPES | 'misc';
 
 const KNOWN_TYPE_IDS = new Set<string>(Object.keys(CONTENT_TYPES));
+
+/** Frontmatter `type` aliases mapped onto canonical section ids. */
+const TYPE_ALIASES: Record<string, keyof typeof CONTENT_TYPES> = {
+  exam: 'exams',
+  lecture: 'lectures',
+  tutorial: 'tutorials',
+  problem: 'problems',
+  'problem-set': 'problems',
+  'problem-sets': 'problems',
+};
+
+/** Resolves a frontmatter `type` value to a known section id. */
+function canonicalSectionType(value: string): keyof typeof CONTENT_TYPES | undefined {
+  const normalized = value.trim().toLowerCase();
+  if (KNOWN_TYPE_IDS.has(normalized)) {
+    return normalized as keyof typeof CONTENT_TYPES;
+  }
+  return TYPE_ALIASES[normalized];
+}
 
 export interface DocLink {
   course: string;
@@ -191,7 +211,7 @@ export async function buildSiteContent(): Promise<SiteContent> {
   const courseIdSet = new Set<string>(metaById.keys());
   const warnings: string[] = [];
 
-  /** course -> folder (content type) -> documents */
+  /** course -> section (folder or frontmatter type) -> documents */
   const byCourse = new Map<string, Map<string, DocLink[]>>();
 
   for (const entry of docEntries) {
@@ -208,15 +228,17 @@ export async function buildSiteContent(): Promise<SiteContent> {
     }
     courseIdSet.add(courseId);
 
-    const info = folderInfo(typeFolder);
+    const declaredType = entry.data.type ? canonicalSectionType(entry.data.type) : undefined;
+    if (entry.data.type && !declaredType) {
+      warnings.push(
+        `document "${entry.id}" declares unknown frontmatter type "${entry.data.type}"; using the folder ("${typeFolder}")`,
+      );
+    }
+    const sectionKey = declaredType ?? typeFolder;
+    const info = folderInfo(sectionKey);
     const fileSlug = slug.split('/').pop() ?? slug;
     const courseTitle = metaById.get(courseId)?.data?.title ?? humanizeSlug(courseId);
     const { order, orderSource } = parseOrder(slug);
-    if (entry.data.type && entry.data.type !== info.type) {
-      warnings.push(
-        `document "${entry.id}" declares frontmatter type "${entry.data.type}" but lives in the "${typeFolder}" folder; using the folder (${info.type})`,
-      );
-    }
 
     const documentSlug = placement.documentSlug;
     const link: DocLink = {
@@ -234,11 +256,11 @@ export async function buildSiteContent(): Promise<SiteContent> {
       href: withBase(`${courseId}/${documentSlug}/`),
     };
 
-    const folders = byCourse.get(courseId) ?? new Map<string, DocLink[]>();
-    const list = folders.get(typeFolder) ?? [];
+    const sections = byCourse.get(courseId) ?? new Map<string, DocLink[]>();
+    const list = sections.get(sectionKey) ?? [];
     list.push(link);
-    folders.set(typeFolder, list);
-    byCourse.set(courseId, folders);
+    sections.set(sectionKey, list);
+    byCourse.set(courseId, sections);
   }
 
   // course.yaml consistency warnings

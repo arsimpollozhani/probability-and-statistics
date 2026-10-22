@@ -30,8 +30,9 @@ const { Content } = await render(entry);
 
 const placement = placeDocument(entry.id);
 const typeLabel =
-  courseInfo.sections.find((section) => section.folder === placement.typeFolder)?.label ??
-  'Documents';
+  courseInfo.sections.find((section) =>
+    section.items.some((item) => item.slug === placement.documentSlug),
+  )?.label ?? 'Documents';
 const title = entry.data.title ?? humanizeSlug(placement.slug.split('/').pop() ?? entry.id);
 const { prev, next } = neighbours(courseInfo.sections, Astro.url.pathname);
 ---

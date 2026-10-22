@@ -25,7 +25,10 @@ const documents = defineCollection({
     description: z.string().optional(),
     order: z.number().int().optional(),
     tags: z.array(z.string()).optional(),
-    /** Advisory only: mismatches with the folder name are reported as warnings. */
+    /**
+     * Optional sidebar section override, e.g. `exam` to group a document under
+     * "Exam Problems" even when it lives in the `lectures` folder.
+     */
     type: z.string().optional(),
     draft: z.boolean().default(false),
   }),
