@@ -1,288 +1,132 @@
 # Proba & Stats Notes
 
-A fully static study website for university lecture notes (probability & statistics, databases,
-…), built with Astro, Tailwind CSS, KaTeX and Shiki. Deployed on GitHub Pages.
+A static study-notes site built with Astro, Tailwind CSS, KaTeX and Shiki. Lecture content lives
+as Markdown and is deployed automatically to GitHub Pages on every push to `main`.
 
-Dark mode: class-based toggle (Moon/Sun button in the sidebar and mobile header), remembers the
-choice in `localStorage`, falls back to the system preference on first visit; content math
-(KaTeX) and prose adapt automatically via `prose-invert`.
+## Requirements
 
-## Content architecture
+- Node.js (LTS) and npm
+- [Pandoc](https://pandoc.org/installing.html) — only needed for LaTeX → Markdown conversion
 
-All study content lives under `content/courses/<course-id>/`. Content is organized by **course**,
-**content type** and **document**, exactly one folder per course:
+## Setup
 
-```
-content/courses/
-├── probability-statistics/          # course folder = stable identifier (kebab-case)
-│   ├── course.yaml                  # optional course metadata (id, title, description, icon, order)
-│   ├── lectures/                    # content types — the folder determines the type
-│   │   ├── 01-probability-basics.md
-│   │   ├── 02-random-variables.md
-│   │   └── ...                      # zero-padded prefix → ordering + stable URL slug
-│   ├── tutorials/
-│   │   └── 01-simulation-in-python.md
-│   ├── problems/
-│   │   ├── 01-probability-exercises.md
-│   │   └── 02-inference-exercises.md
-│   └── reference/
-│       └── 01-statistics-summary-sheet.md
-├── databases/
-│   ├── course.yaml
-│   ├── lectures/…
-│   └── problems/…
-└── machine-learning/                # course.yaml only — renders as "no documents yet"
-    ├── course.yaml
-    ├── lectures/ (.gitkeep)
-    ├── tutorials/ (.gitkeep)
-    ├── problems/ (.gitkeep)
-    └── reference/ (.gitkeep)
+```bash
+git clone https://github.com/arsimpollozhani/probability-and-statistics.git
+cd probability-and-statistics
+npm install
+npm run dev
 ```
 
-### Known content types
+Open `http://localhost:4321/proba-stats-site/`.
 
-The type comes from the folder name. Known types (and the sidebar order):
+## Adding a lecture
 
-| Folder | Label | Icon |
-| --- | --- | --- |
-| `lectures/` | Lectures | book-open |
-| `tutorials/` | Tutorials | lightbulb |
-| `problems/` | Problem sets | pencil-line |
-| `reference/` | Reference sheets | library |
+### From Markdown
 
-Any *other* folder name still works and is rendered under a humanized label (e.g. `seminars/`
-→ "Seminars") — no Markdown file is ever silently excluded.
+Create a file under a course content folder:
 
-### Document URLs and ordering
+```
+content/courses/probability-statistics/lectures/06-markov-chains.md
+```
 
-- URL: `/<course>/<content-type>/<NN-slug>/`, e.g.
-  `/probability-statistics/lectures/01-probability-basics/`.
-- Ordering: frontmatter `order` wins → else the zero-padded filename prefix (`01-…`) → else
-  alphabetical. Previous/next links follow this same order within a content type.
-- Titles: frontmatter `title` wins → else derived from the filename
-  (`01-probability-basics` → "Probability basics").
-
-### Frontmatter fields (all optional)
+The zero-padded prefix (`06-`) controls ordering and the URL. Frontmatter is optional:
 
 ```yaml
 ---
-title: Markov chains          # override the derived title
-description: One-sentence teaser for course pages and search.
-order: 4                      # explicit ordering override (must be unique per folder)
-tags: [python, simulation]    # used by search and shown on the page
-type: lectures                # advisory only — folder wins, mismatch warns at build
-draft: true                   # hide the document from the site
+title: Markov chains
+description: One-sentence summary for listings and search.
+tags: [markov, stochastic]
+draft: false
 ---
 ```
 
-## Automatic discovery
+Write normal Markdown with `$inline$` and `$$display$$` math. The page, sidebar entry, search
+result and previous/next links are generated automatically.
 
-Every build re-scans `content/courses/`. Adding a Markdown file automatically:
+### From LaTeX
 
-1. discovers and parses the file (Zod-validated frontmatter — invalid metadata fails loudly);
-2. generates its static HTML page at the derived URL;
-3. adds it to the sidebar under the right course + content type;
-4. adds it to the course index page, its section list, and the search index;
-5. generates previous/next links from the ordering rules.
+1. Add one folder per lecture under `latex/`, with `main.tex` and its images:
 
-No route files, navigation arrays, component code or central registry are touched.
-
-Adding content **strictly requires no application code edits**. The only artifacts that get
-regenerated are the build outputs: `npm run dev` / `npm run build`.
-
-## Adding a lecture (exact steps)
-
-1. Choose the course folder, e.g. `content/courses/databases/` (create one first if needed —
-   see below).
-2. Choose the content type folder: `lectures/`, `tutorials/`, `problems/`, `reference/` or your
-   own (`seminars/`).
-3. Create `content/courses/databases/lectures/03-joins.md`:
-   - the **zero-padded prefix** `03-` determines the order and must be unique within the folder
-     (duplicates produce a build-time warning);
-   - the remainder of the filename (`joins`) forms the URL slug;
-   - do not use spaces or accents in file names; lowercase-kebab-case recommended.
-4. Optional frontmatter (title, description, order, tags, draft) — anything can be omitted.
-5. Write Markdown ($...$ / $$...$$ math, fenced code blocks) and save.
-6. Run `npm run dev` (or commit and let CI build) — the page, sidebar entry, course listing,
-   search entry and prev/next links appear automatically.
-
-Verification checklist for a new lecture: `npm run build` then
-`npx astro preview --open /databases/lectures/03-joins/`.
-
-## Adding a course (exact steps)
-
-1. `mkdir -p content/courses/<course-id>/{lectures,tutorials,problems,reference}` where
-   `<course-id>` is a lowercase kebab-case identifier (e.g. `databases`). The folder name is the
-   permanent, stable identifier and part of every document URL — do not change it later.
-2. Add `content/courses/<course-id>/course.yaml`:
-
-   ```yaml
-   id: <course-id>              # must match the folder name, warned otherwise
-   title: Databases             # course title
-   description: Short blurb shown on overview pages.
-   icon: database               # one of the keys in src/lib/icons.ts (optional)
-   order: 2                     # course ordering on the home page (optional, integer)
+   ```
+   latex/lecture-06-markov-chains/main.tex
    ```
 
-   All fields are optional; the file itself may be omitted (the folder name is humanized and
-   used as the title). Empty sub-folders are fine — commit a `.gitkeep` or delete
-   those you don't plan to use (see `machine-learning/` as a working example of a course
-   without documents yet).
-3. Add lecture/tutorial/problem/reference Markdown files per the steps above.
-4. `npm run build` — the course card and sidebar section appear automatically.
+2. Convert the changed lectures:
 
-## Search
+   ```bash
+   npm run latex:sync
+   ```
 
-The `/search` page filters titles, descriptions, tags, course and type over an index that is
-embedded at build time (`buildSiteContent().searchIndex`) — new documents are indexed on the
-next build automatically. Press `/` from anywhere to jump to search.
+   This writes `content/courses/probability-statistics/lectures/06-markov-chains.md` and copies
+   images to `public/images/lectures/06-markov-chains/`.
 
-## Internal links in Markdown
+3. Read `conversion-report.md`. Fix anything marked **YES / needs review** in the generated
+   Markdown and run the checks:
 
-Write internal links as root-absolute paths without the deployment prefix:
+   ```bash
+   npm run build
+   npm run check
+   ```
 
-```md
-See [Random variables](/probability-statistics/lectures/02-random-variables/).
+4. Commit the `.tex` source, generated `.md`, copied images and report, then push.
+
+Useful conversion commands:
+
+```bash
+npm run latex:sync              # convert only changed lectures
+npm run latex:watch             # watch latex/ and convert on change
+npm run latex:sync -- --force   # reconvert everything
+npm run latex:sync -- --course databases   # convert into another course
 ```
 
-A tiny rehype plugin (`astro.config.mjs → rehypePrefixLinks`) adds the deployment base at
-build time, so these links work identically on GitHub Pages, a custom domain root or a preview.
-`node scripts/check-links.mjs` (runs as part of `npm run build`) verifies that every internal
-link in the generated HTML actually resolves — broken references fail the build.
+**Important:** GitHub Actions builds the site but does **not** run the LaTeX converter. Only
+committed Markdown and images are published. Syncing a changed `.tex` overwrites its generated
+`.md`, so make manual edits after conversion or reapply them after the next sync.
 
-## Validation & warnings
+## Adding a course
 
-Detected at build time (non-fatal warnings are printed as `[content] …`, fatal issues abort the
-build):
+Create `content/courses/<course-id>/` with an optional `course.yaml`:
 
-- invalid frontmatter / `course.yaml` → Zod validation error (build fails);
-- `course.yaml` `id` mismatching the folder name → warning, folder wins;
-- frontmatter `type` mismatching the folder → warning, folder wins;
-- duplicate `order` values or duplicate filename prefixes in one folder → warning,
-  alphabetical order decides;
-- documents outside the required layout (`courses/<course>/<type>/<file>.md`) → warning,
-  still published;
-- broken internal links after rendering → `[check-links]` report, build fails (exit 1).
+```yaml
+id: databases
+title: Databases
+description: Short blurb for the home and course pages.
+icon: database
+order: 2
+```
 
-## Mathematics
-
-Inline `$x = y^2$` and display `$$\int_\Omega X\,dP$$` syntax (remark-math + rehype-katex,
-rendered at build time — zero client JS). Custom macros live in `astro.config.mjs`.
+Then add Markdown files under `lectures/`, `tutorials/`, `problems/` or `reference/`. The folder
+name is the permanent course ID and part of every URL.
 
 ## Commands
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | dev server at `http://localhost:4321/proba-stats-site/` |
-| `npm run build` | static build + internal link check, output in `dist/` |
-| `npm run preview` | preview the production build locally |
-| `npm run check` | TypeScript / Astro diagnostics |
-| `node scripts/check-links.mjs` | re-run the internal link check only |
-| `node scripts/convert-latex.mjs` | convert `latex/<lecture-folder>/main.tex` → course Markdown (see below) |
-| `npm run latex:sync` | convert only the lectures whose `latex/` source changed |
-| `npm run latex:watch` | watch `latex/` and convert on every change (run while `npm run dev` is up) |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the site and check all internal links |
+| `npm run preview` | Preview the production build locally |
+| `npm run check` | Run Astro/TypeScript diagnostics |
+| `npm run latex:sync` | Convert changed LaTeX lectures to Markdown |
+| `npm run latex:watch` | Watch `latex/` and convert on every change |
 
-## LaTeX → Markdown conversion
+## Project layout
 
-University lecture notes live as LaTeX in `latex/<lecture-folder>/` (one folder per
-lecture, main file `main.tex`, images alongside). They are converted with Pandoc +
-post-processing; the source `.tex` files are never modified.
-
-First-time setup (no root needed): the pipeline uses a user-local static Pandoc:
-
-```sh
-mkdir -p ~/.local/bin
-curl -fsSL -o /tmp/pandoc.tar.gz https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-linux-amd64.tar.gz
-tar -xzf /tmp/pandoc.tar.gz -C /tmp
-cp /tmp/pandoc-3.6.4/bin/pandoc ~/.local/bin
+```
+latex/                 # LaTeX lecture sources
+content/courses/       # Markdown content, grouped by course and type
+public/images/         # Images used by lectures
+src/                   # Astro pages, layouts, components and styles
+scripts/               # LaTeX conversion and link-checking scripts
 ```
 
-Batch-convert every lecture (repeatable; new lectures only need a new folder under `latex/`):
+## Deployment
 
-```sh
-node scripts/convert-latex.mjs
-node scripts/convert-latex.mjs --overwrite        # re-convert existing ones
-node scripts/convert-latex.mjs --dry-run          # see warnings without writing
-node scripts/convert-latex.mjs --report-only      # refresh the report without converting
-```
+Pushing to `main` runs `.github/workflows/deploy.yml`, builds the site and deploys it to GitHub
+Pages. The Pages source must remain **Settings → Pages → Source → GitHub Actions**.
 
-### Reflecting changes (the usual workflow)
-
-After editing or adding files under `latex/` run:
-
-```sh
-npm run latex:sync        # one-shot: converts only the changed lectures
-npm run latex:watch       # keeps running; converts automatically on every change
-npm run latex:sync -- --force   # re-convert everything (also refreshes the report)
-```
-
-The sync script fingerprints each lecture folder (sha256 of every `.tex` file plus
-name/size of each other file) into `.latex-sync.json` (git-ignored) and re-converts
-only the folders whose fingerprint changed or whose `.md` target is missing. New
-lecture folders are picked up automatically; a full `conversion-report.md` is
-regenerated afterwards. `latex:watch` uses the same loop so you can keep the dev
-server (`npm run dev`) open in another terminal — Astro hot-reloads the content as
-the Markdown files change.
-
-What it does per lecture folder:
-
-- writes `content/courses/<course>/<type>/<NN>-<slug>.md` (number comes from the
-  `lecture-NN-…` folder prefix), with the `\title{…}` text as frontmatter title;
-  **existing targets are skipped unless `--overwrite`**
-- copies every image of the folder to `public/images/<type>/<NN>-<slug>/` — including
-  images never referenced in the LaTeX (table screenshots etc. are kept as assets)
-- rewrites image references to root-absolute `/images/…` paths (the deployment base
-  prefix is added at build time)
-- converts math to `$…$` / `$$…$$` delimiters and flattens `\begin{figure}`,
-  `\newpage`, `\vspace…`; `\ref{…}` markers become visible `[ref: …]` markers
-  because equation/figure numbering changes in Markdown
-- validates **every** math expression with exactly the KaTeX version the site installs
-- compares structure between the .tex source and the .md output
-  (headings, inline/display math, images, list items)
-
-It writes `conversion-report.md` at the repo root: a table of per-file counts plus all
-warnings, and a **manual-review flag** for any file with custom commands, unsupported
-environments, broken `\ref`s, unknown figures, KaTeX-rendering failures or count
-differences. The script exits non-zero when some source needs review. Equal counts do
-**not** by themselves prove a lossless conversion — the flagged files (and ideally all
-of them) must be read by a human before publishing.
-
-## Deployment (GitHub Pages)
-
-The workflow in `.github/workflows/deploy.yml` builds and deploys on every push to `main`.
-One-time setup: in the repository **Settings → Pages → Build and deployment**, set *Source* to
-**GitHub Actions**.
-
-During Actions builds the site URL and base path are derived from `GITHUB_REPOSITORY`, so
-renaming the repository needs no code change. Local builds keep the `/proba-stats-site`
-default. Override either value when needed, for example for a custom domain:
+The site URL and base path are derived from the repository name during Actions builds. Override
+them only when needed:
 
 ```bash
 SITE_URL=https://example.io BASE_PATH=/ npm run build
-```
-
-The repository is configured with the Pages build type `workflow`, so Jekyll is never run.
-A root `.nojekyll` is also kept for safety, and `public/.nojekyll` ships the marker inside
-`dist/`. **Settings → Pages → Source** should remain **GitHub Actions**; switching back to
-branch deployment would serve the repository sources instead of the built site.
-
-## Project structure (code)
-
-```
-src/
-├── content.config.ts        # collections: documents (**/*.md) + coursesMeta (*/course.yaml)
-├── components/Sidebar.astro # persistent navigation (courses → content types → documents)
-├── layouts/BaseLayout.astro # shell: sidebar + main + mobile drawer + "/" search shortcut
-├── lib/
-│   ├── content.ts           # discovery → courses/sections/documents, ordering, warnings, search index
-│   ├── icons.ts             # icon name → Lucide component map
-│   └── slug.ts              # URL slug rules
-├── pages/
-│   ├── index.astro                  # course overview
-│   ├── search.astro                 # client-side filter over the build-time index
-│   ├── 404.astro
-│   └── [course]/
-│       ├── index.astro              # course index: breadcrumbs, per-type sections
-│       └── [...lecture].astro       # document pages: nav math, prev/next
-└── styles/global.css
 ```
