@@ -34,24 +34,24 @@ const pageDesc = description ?? SITE.description;
       })();
     </script>
   </head>
-  <body class="flex min-h-dvh bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <body class="flex min-h-dvh overflow-x-clip bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
     <!-- CSS-only mobile drawer: the checkbox below powers the overlay + sidebar -->
     <input id="site-nav" type="checkbox" class="hidden" />
     <div
       aria-hidden="true"
-      class="pointer-events-none fixed inset-0 z-30 bg-slate-900/40 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 md:hidden"
+      class="pointer-events-none fixed inset-0 z-30 bg-slate-900/40 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 lg:hidden"
     >
       <label for="site-nav" class="block h-full w-full cursor-pointer"></label>
     </div>
     <Sidebar />
     <div class="flex min-w-0 flex-1 flex-col">
       <header
-        class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-slate-200 bg-white/90 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90 md:hidden"
+        class="sticky top-0 z-20 flex h-14 items-center gap-2 border-b border-slate-200 bg-white/90 px-4 backdrop-blur sm:gap-3 sm:px-5 dark:border-slate-800 dark:bg-slate-950/90 lg:hidden"
       >
         <label
           for="site-nav"
           aria-label="Open menu"
-          class="cursor-pointer rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+          class="inline-flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,16 +69,18 @@ const pageDesc = description ?? SITE.description;
               y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
           >
         </label>
-        <a href={withBase('')} class="text-sm font-semibold text-slate-900 dark:text-slate-100"
+        <a
+          href={withBase('')}
+          class="min-w-0 truncate text-sm font-semibold text-slate-900 dark:text-slate-100"
           >{SITE.name}</a
         >
         <ThemeToggle />
       </header>
-      <main class="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8 lg:px-12">
+      <main class="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10 lg:px-10 xl:px-12">
         <slot />
       </main>
       <footer
-        class="border-t border-slate-200 px-5 py-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400"
+        class="border-t border-slate-200 px-4 py-6 text-center text-xs text-slate-500 sm:px-6 dark:border-slate-800 dark:text-slate-400"
       >
         <p>© {new Date().getFullYear()} {SITE.name} · Static site rendered from Markdown</p>
       </footer>

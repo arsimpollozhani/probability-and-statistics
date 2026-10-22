@@ -13,10 +13,20 @@ html {
   scroll-behavior: smooth;
   color-scheme: light dark;
   font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent the page behind the mobile/tablet drawer from scrolling */
+@media (max-width: 1023px) {
+  body:has(#site-nav:checked) {
+    overflow: hidden;
+  }
 }
 
 /* Shiki code blocks inside prose */
 .prose .astro-code {
+  max-width: 100%;
+  overflow-x: auto;
   border-radius: 0.75rem;
   border: 1px solid var(--color-slate-200);
   font-size: 0.86em;
@@ -25,6 +35,17 @@ html {
 /* Long-form lecture prose: roomier paragraphs and clear section spacing */
 .prose {
   line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.prose :where(img, video, iframe) {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose :where(pre) {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .prose :where(p) {
