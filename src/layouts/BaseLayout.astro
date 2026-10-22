@@ -1,0 +1,117 @@
+---
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+import { SITE } from '../config';
+import Sidebar from '../components/Sidebar.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { withBase } from '../lib/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE.name}` : SITE.name;
+const pageDesc = description ?? SITE.description;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageDesc} />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        const dark =
+          stored ? stored === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+  </head>
+  <body class="flex min-h-dvh bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+    <!-- CSS-only mobile drawer: the checkbox below powers the overlay + sidebar -->
+    <input id="site-nav" type="checkbox" class="hidden" />
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 z-30 bg-slate-900/40 opacity-0 transition-opacity duration-200 peer-checked:pointer-events-auto peer-checked:opacity-100 md:hidden"
+    >
+      <label for="site-nav" class="block h-full w-full cursor-pointer"></label>
+    </div>
+    <Sidebar />
+    <div class="flex min-w-0 flex-1 flex-col">
+      <header
+        class="sticky top-0 z-20 flex h-14 items-center gap-3 border-b border-slate-200 bg-white/90 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90 md:hidden"
+      >
+        <label
+          for="site-nav"
+          aria-label="Open menu"
+          class="cursor-pointer rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line
+              x1="4"
+              x2="20"
+              y1="6"
+              y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+          >
+        </label>
+        <a href={withBase('')} class="text-sm font-semibold text-slate-900 dark:text-slate-100"
+          >{SITE.name}</a
+        >
+        <ThemeToggle />
+      </header>
+      <main class="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8 lg:px-12">
+        <slot />
+      </main>
+      <footer
+        class="border-t border-slate-200 px-5 py-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400"
+      >
+        <p>© {new Date().getFullYear()} {SITE.name} · Static site rendered from Markdown</p>
+      </footer>
+    </div>
+
+    <!-- Theme toggle wiring (the button markup lives in <ThemeToggle />) -->
+    <script>
+      document.querySelectorAll('.theme-toggle').forEach((button) => {
+        button.addEventListener('click', () => {
+          const dark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        });
+      });
+    </script>
+
+    <!-- Press "/" anywhere to jump to the search page -->
+    <script>
+      document.addEventListener('keydown', (event: KeyboardEvent) => {
+        if (event.key !== '/') return;
+        const target = event.target as HTMLElement | null;
+        if (
+          target &&
+          (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)
+        ) {
+          return;
+        }
+        event.preventDefault();
+        const searchPath = `${import.meta.env.BASE_URL}search/`.replace(/\/+/g, '/');
+        window.location.href =
+          searchPath.startsWith('/') || searchPath.startsWith('http')
+            ? searchPath
+            : `/${searchPath}`;
+      });
+    </script>
+  </body>
+</html>

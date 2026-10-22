@@ -1,0 +1,132 @@
+---
+import { FileText, GraduationCap, Search, X } from 'lucide-astro';
+import { SITE } from '../config';
+import ThemeToggle from './ThemeToggle.astro';
+import { buildSiteContent, normalizeRoute, withBase } from '../lib/content';
+import { getIcon } from '../lib/icons';
+
+const site = await buildSiteContent();
+const activeRoute = normalizeRoute(Astro.url.pathname);
+const searchHref = withBase('search/');
+---
+
+<aside
+  aria-label="Course navigation"
+  class="fixed inset-y-0 left-0 z-40 flex w-72 -translate-x-full flex-col border-r border-slate-200 bg-white transition-transform duration-200 peer-checked:translate-x-0 dark:border-slate-800 dark:bg-slate-900 md:sticky md:top-0 md:h-dvh md:translate-x-0"
+>
+  <div class="flex h-16 shrink-0 items-center gap-2.5 border-b border-slate-200 px-5 dark:border-slate-800">
+    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
+      <GraduationCap size={18} />
+    </span>
+    <a
+      href={withBase('')}
+      class="min-w-0 truncate text-[15px] font-semibold text-slate-900 dark:text-slate-100"
+    >
+      {SITE.name}
+    </a>
+    <ThemeToggle />
+    <label
+      for="site-nav"
+      aria-label="Close menu"
+      class="cursor-pointer rounded-md p-1.5 text-slate-500 transition-colors hover:bg-slate-100 md:hidden dark:text-slate-400 dark:hover:bg-slate-800"
+    >
+      <X size={18} />
+    </label>
+  </div>
+  <nav class="flex-1 space-y-7 overflow-y-auto px-3 py-5 pb-8">
+    <a
+      href={searchHref}
+      class:list={[
+        'mb-1 flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium transition-colors',
+        activeRoute === normalizeRoute(searchHref)
+          ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300'
+          : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white',
+      ]}
+    >
+      <Search size={15} class="shrink-0 text-slate-400 dark:text-slate-500" />
+      Search notes
+      <span
+        class="pointer-events-none ml-auto rounded-md bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500 dark:bg-slate-800 dark:text-slate-400"
+      >
+        /
+      </span>
+    </a>
+    {
+      site.courses.map((course) => {
+        const Icon = getIcon(course.icon);
+        const courseActive =
+          activeRoute === normalizeRoute(course.href) ||
+          course.sections.some((section) =>
+            section.items.some((item) => normalizeRoute(item.href) === activeRoute),
+          );
+        return (
+          <section>
+            <a
+              href={course.href}
+                class:list={[
+                  'mb-2 flex items-center gap-2 px-2.5 text-[11px] font-semibold uppercase tracking-wider transition-colors',
+                  courseActive
+                    ? 'text-indigo-600 dark:text-indigo-400'
+                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200',
+                ]}
+            >
+              <Icon size={13} />
+              <span class="truncate">{course.title}</span>
+            </a>
+            {course.sections.length === 0 && (
+              <p class="px-2.5 text-[12px] text-slate-400 dark:text-slate-500">No documents yet</p>
+            )}
+            {course.sections.map((section) => (
+              <div class="mb-3 last:mb-0">
+                <p
+                  class="px-2.5 pb-1 text-[10px] font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500"
+                >
+                  {section.label}
+                </p>
+                <ul class="space-y-0.5">
+                  {section.items.map((item) => {
+                    const active = normalizeRoute(item.href) === activeRoute;
+                    return (
+                      <li>
+                        <a
+                          href={item.href}
+                          aria-current={active ? 'page' : undefined}
+                          class:list={[
+                            'flex items-start gap-2 rounded-lg px-2.5 py-1.5 text-[13px] font-medium leading-snug transition-colors',
+                            active
+                              ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300'
+                              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white',
+                          ]}
+                        >
+                          <FileText
+                            size={13}
+                            class:list={[
+                              'mt-0.5 shrink-0',
+                              active
+                                ? 'text-indigo-500 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-600',
+                            ]}
+                          />
+                          <span class="min-w-0">{item.title}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </section>
+        );
+      })
+    }
+    {
+      site.courses.length === 0 && (
+        <p class="px-2.5 text-[13px] text-slate-500 dark:text-slate-400">
+          No courses yet. Create a folder under <code
+            class="rounded bg-slate-100 px-1 py-0.5 text-[11px] dark:bg-slate-800">content/courses/</code
+          >.
+        </p>
+      )
+    }
+  </nav>
+</aside>

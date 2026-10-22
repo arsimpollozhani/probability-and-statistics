@@ -1,0 +1,5 @@
+id: probability-statistics
+title: Probability & Statistics
+description: University lecture notes covering distributions, random samples and the central limit theorem, estimators, hypothesis testing and nonparametric tests.
+icon: chart-column
+order: 1

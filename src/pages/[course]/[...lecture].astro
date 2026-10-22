@@ -1,0 +1,123 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  buildSiteContent,
+  humanizeSlug,
+  neighbours,
+  placeDocument,
+  withBase,
+} from '../../lib/content';
+import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const [entries, site] = await Promise.all([getCollection('documents'), buildSiteContent()]);
+  return entries.flatMap((entry) => {
+    const placement = placeDocument(entry.id);
+    const courseInfo = site.courses.find((candidate) => candidate.id === placement.courseId);
+    if (!courseInfo) return []; // course with only drafts: never linked, nothing to render
+    return [
+      {
+        params: { course: placement.courseId, lecture: placement.documentSlug },
+        props: { entry, courseInfo },
+      },
+    ];
+  });
+}
+
+const { entry, courseInfo } = Astro.props;
+const { Content } = await render(entry);
+
+const placement = placeDocument(entry.id);
+const typeLabel =
+  courseInfo.sections.find((section) => section.folder === placement.typeFolder)?.label ??
+  'Documents';
+const title = entry.data.title ?? humanizeSlug(placement.slug.split('/').pop() ?? entry.id);
+const { prev, next } = neighbours(courseInfo.sections, Astro.url.pathname);
+---
+
+<BaseLayout
+  title={`${title}${courseInfo ? ` · ${courseInfo.title}` : ''}`}
+  description={entry.data.description}
+>
+  <div class="mx-auto max-w-3xl">
+    <header class="mb-10 border-b border-slate-200 pb-8 dark:border-slate-800">
+      <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-1.5 text-[13px]">
+        <a
+          href={withBase('')}
+          class="font-medium text-slate-500 transition-colors hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
+          >Home</a
+        >
+        {courseInfo && (
+          <>
+            <ChevronRight size={13} class="text-slate-300 dark:text-slate-600" />
+            <a
+              href={courseInfo.href}
+              class="font-medium text-slate-500 transition-colors hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
+              >{courseInfo.title}</a
+            >
+          </>
+        )}
+        <ChevronRight size={13} class="text-slate-300 dark:text-slate-600" />
+        <span class="font-medium text-slate-400 dark:text-slate-500">{typeLabel}</span>
+      </nav>
+      <h1 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">{title}</h1>
+      {entry.data.description && (
+        <p class="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-300">{entry.data.description}</p>
+      )}
+      {
+        entry.data.tags && entry.data.tags.length > 0 && (
+          <p class="mt-4 flex flex-wrap gap-1.5">
+            {entry.data.tags.map((tag) => (
+              <span class="rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-medium text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-300">
+                #{tag}
+              </span>
+            ))}
+          </p>
+        )
+      }
+    </header>
+    <article
+      class="prose prose-slate max-w-none prose-headings:tracking-tight prose-a:font-medium prose-a:text-indigo-700 prose-a:no-underline hover:prose-a:underline dark:prose-invert dark:prose-a:text-indigo-400"
+    >
+      <Content />
+    </article>
+    <nav
+      aria-label="Previous and next document"
+      class="mt-12 flex items-stretch justify-between gap-4 border-t border-slate-200 pt-8 dark:border-slate-800"
+    >
+      {
+        prev ? (
+          <a
+            href={prev.href}
+            class="group flex min-w-0 max-w-[46%] flex-col rounded-xl border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500 dark:hover:bg-indigo-500/10"
+          >
+            <span class="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+              <ArrowLeft size={13} /> Previous
+            </span>
+            <span class="mt-1 line-clamp-2 w-full break-words text-sm font-semibold text-slate-900 group-hover:text-indigo-700 dark:text-slate-100 dark:group-hover:text-indigo-300">
+              {prev.title}
+            </span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        next && (
+          <a
+            href={next.href}
+            class="group flex min-w-0 max-w-[46%] flex-col items-end rounded-xl border border-slate-200 bg-white p-4 text-right transition-colors hover:border-indigo-300 hover:bg-indigo-50/50 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500 dark:hover:bg-indigo-500/10"
+          >
+            <span class="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
+              Next <ArrowRight size={13} />
+            </span>
+            <span class="mt-1 line-clamp-2 w-full break-words text-sm font-semibold text-slate-900 group-hover:text-indigo-700 dark:text-slate-100 dark:group-hover:text-indigo-300">
+              {next.title}
+            </span>
+          </a>
+        )
+      }
+    </nav>
+  </div>
+</BaseLayout>

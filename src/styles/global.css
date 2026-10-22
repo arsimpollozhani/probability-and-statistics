@@ -1,0 +1,80 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* class-based dark mode (toggle button + localStorage, system-preference fallback) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  font-family: var(--font-sans);
+}
+
+/* Shiki code blocks inside prose */
+.prose .astro-code {
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-slate-200);
+  font-size: 0.86em;
+}
+
+/* Long-form lecture prose: roomier paragraphs and clear section spacing */
+.prose {
+  line-height: 1.8;
+}
+
+.prose :where(p) {
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
+}
+
+.prose :where(li) {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.prose :where(h2) {
+  margin-top: 2.75em;
+  margin-bottom: 1em;
+}
+
+.prose :where(h3) {
+  margin-top: 2.1em;
+  margin-bottom: 0.8em;
+}
+
+.prose :where(h4) {
+  margin-top: 1.75em;
+  margin-bottom: 0.65em;
+}
+
+/* KaTeX: centre display equations and allow wide ones to scroll instead of clipping */
+.prose :where(.katex-display) {
+  margin: 1.6em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+.prose :where(.katex) {
+  font-size: 1.08em;
+}
+
+/* tables are data-heavy (significance tables): let them scroll instead of squeezing */
+.prose :where(table) {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+/* light-on-white figures stay readable in dark mode */
+.dark .prose :where(img) {
+  background-color: #fff;
+  padding: 0.35rem;
+  border-radius: 0.75rem;
+}

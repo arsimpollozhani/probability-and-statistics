@@ -1,0 +1,12 @@
+---
+import { Moon, Sun } from 'lucide-astro';
+---
+
+<button
+  type="button"
+  aria-label="Toggle dark mode"
+  class="theme-toggle ml-auto cursor-pointer rounded-lg p-2 text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+>
+  <Sun size={17} class="hidden dark:block" />
+  <Moon size={17} class="dark:hidden" />
+</button>
